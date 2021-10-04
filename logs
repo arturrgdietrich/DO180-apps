@@ -1,0 +1,736 @@
+[student@workstation ~]$ cd ~/PRojects
+bash: cd: /home/student/PRojects: No such file or directory
+[student@workstation ~]$ cd ~/Projects
+bash: cd: /home/student/Projects: No such file or directory
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ pwd
+/home/student
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ cd ..
+[student@workstation home]$ 
+[student@workstation home]$ cd devops
+bash: cd: devops: Permission denied
+[student@workstation home]$ 
+[student@workstation home]$ cd Student
+bash: cd: Student: No such file or directory
+[student@workstation home]$ 
+[student@workstation home]$ 
+[student@workstation home]$ cd ~
+[student@workstation ~]$ 
+[student@workstation ~]$ pwd
+/home/student
+[student@workstation ~]$ 
+[student@workstation ~]$ cd student
+bash: cd: student: No such file or directory
+[student@workstation ~]$ 
+[student@workstation ~]$ ls -la
+total 32
+drwx------. 17 student student 4096 Oct  4 08:27 .
+drwxr-xr-x.  4 root    root      35 Nov  5  2020 ..
+drwx------.  3 student student   17 May 18 14:47 .ansible
+-rw-r--r--.  1 student student   18 Aug 30  2019 .bash_logout
+-rw-r--r--.  1 student student  141 Aug 30  2019 .bash_profile
+-rw-r--r--.  1 student student  312 Aug 30  2019 .bashrc
+drwx------. 10 student student  233 Oct  4 08:27 .cache
+drwxr-xr-x. 11 student student 4096 Oct  4 08:27 .config
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Desktop
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Documents
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Downloads
+-rw-------.  1 student student   16 May 18 14:47 .esd_auth
+-rwxr-xr-x.  1 student student  789 May 18 14:49 .gitconfig
+-rw-------.  1 student student  310 Oct  4 08:27 .ICEauthority
+drwxr-xr-x.  3 student student   19 Oct  4 08:27 .local
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Music
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Pictures
+drwxrw----.  3 student student   19 Oct  4 08:27 .pki
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Public
+drwx------.  2 student student   54 Nov  5  2020 .ssh
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Templates
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Videos
+drwxr-xr-x.  3 student student   24 May 18 14:49 .vscode-oss
+[student@workstation ~]$ podman
+Error: missing command 'podman COMMAND'
+Try 'podman --help' for more information.
+[student@workstation ~]$ 
+[student@workstation ~]$ podman | grep -i perm
+Error: missing command 'podman COMMAND'
+Try 'podman --help' for more information.
+[student@workstation ~]$ podman info | grep -i perm
+[student@workstation ~]$ podman info | grep -isel
+  BuildahVersion: 1.12.0-dev
+    package: conmon-2.0.6-1.module+el8.2.0+5182+3136e5d4.x86_64
+    distribution: '"rhel"'
+  MemTotal: 6075633664
+    package: runc-1.0.0-65.rc10.module+el8.2.0+5762+aaee29fb.x86_64
+  SwapTotal: 0
+  eventlogger: journald
+  hostname: workstation.lab.example.com
+  kernel: 4.18.0-193.14.3.el8_2.x86_64
+  os: linux
+  rootless: true
+  slirp4netns:
+    Executable: /usr/bin/slirp4netns
+    Package: slirp4netns-0.4.2-3.git21fdece.module+el8.2.0+5658+9a15711d.x86_64
+      slirp4netns version 0.4.2+dev
+  uptime: 2h 31m 36.25s (Approximately 0.08 days)
+  blocked: null
+  insecure: null
+  ConfigFile: /home/student/.config/containers/storage.conf
+  GraphDriverName: overlay
+    overlay.mount_program:
+      Executable: /usr/bin/fuse-overlayfs
+      Package: fuse-overlayfs-0.7.2-5.module+el8.2.0+6060+9dbc027d.x86_64
+        fuse-overlayfs: version 0.7.2
+        FUSE library version 3.2.1
+        using FUSE kernel interface version 7.26
+  GraphRoot: /home/student/.local/share/containers/storage
+    Backing Filesystem: xfs
+    Native Overlay Diff: "false"
+    Using metacopy: "false"
+  VolumePath: /home/student/.local/share/containers/storage/volumes
+[student@workstation ~]$ podman info | grep -i selinux
+[student@workstation ~]$ podman info | grep -i appar
+[student@workstation ~]$ podman info | grep -i app
+  IDMappings:
+  uptime: 2h 32m 4.39s (Approximately 0.08 days)
+[student@workstation ~]$ podman info | grep -i sel
+[student@workstation ~]$ 
+[student@workstation ~]$ lab-configure
+
+This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+
+ · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+ · Enter the Username: znajkx
+ · Enter the Password: 36762da4b020410eb2a6
+ · Enter the GitHub Account Name: ^C
+[student@workstation ~]$ git config --global credential.helper cache
+[student@workstation ~]$ lab-configure
+
+This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+
+ · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+ · Enter the Username: znajkx
+ · Enter the Password: 36762da4b020410eb2a6
+ · Enter the GitHub Account Name: arturrgdietrich
+ · Enter the Quay.io Account Name: arturrgdietrich
+
+You entered:
+ · API Endpoint:			https://api.na46.prod.nextcle.com:6443
+ · Username:				znajkx
+ · Password:				36762da4b020410eb2a6
+ · GitHub Account Name:			arturrgdietrich
+ · Quay.io Account Name:		arturrgdietrich
+
+Generated config:
+ · API Endpoint:			https://api.na46.prod.nextcle.com:6443
+ · Wildcard Domain:			apps.na46.prod.nextcle.com
+ · Nexus Server Host:			nexus-common.apps.na46.prod.nextcle.com
+ · Username:				znajkx
+ · Password:				36762da4b020410eb2a6
+ · GitHub Account Name:			arturrgdietrich
+ · Quay.io Account Name:		arturrgdietrich
+
+Verifying your API Endpoint...
+
+ERROR:
+Cannot connect to an OpenShift 4.5 API using your URL.
+Please verify you network connectivity and that the URL does not point to an OpenShift 3.x nor to a non-OpenShift Kubernetes API.
+[student@workstation ~]$ 
+[student@workstation ~]$ lab-configure
+
+This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+
+ · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+ · Enter the Username: znajkx
+ · Enter the Password: 36762da4b020410eb2a6
+ · Enter the GitHub Account Name: arturrgdietrich
+ · Enter the Quay.io Account Name: arturrgdietrich
+
+You entered:
+ · API Endpoint:			https://api.na46.prod.nextcle.com:6443
+ · Username:				znajkx
+ · Password:				36762da4b020410eb2a6
+ · GitHub Account Name:			arturrgdietrich
+ · Quay.io Account Name:		arturrgdietrich
+
+Generated config:
+ · API Endpoint:			https://api.na46.prod.nextcle.com:6443
+ · Wildcard Domain:			apps.na46.prod.nextcle.com
+ · Nexus Server Host:			nexus-common.apps.na46.prod.nextcle.com
+ · Username:				znajkx
+ · Password:				36762da4b020410eb2a6
+ · GitHub Account Name:			arturrgdietrich
+ · Quay.io Account Name:		arturrgdietrich
+
+Verifying your API Endpoint...
+
+Verifying your Nexus host...
+
+Verifying your OpenShift developer user credentials...
+
+Verifying your GitHub account name...
+
+Verifying your Quay.io account name...
+
+Verifying your cluster configuration...
+
+Saving your lab configuration file...
+
+All fine, lab config saved. You can now proceed with your exercises.
+
+If you need to modify the configuration, rerun this script or directly modify the values in /usr/local/etc/ocp4.config.
+
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ [student@workstation ~]$ cd ~/PRojects
+podman info | grep -i sel
+[student@workbash: [student@workstation: command not found...
+[student@workstation ~]$ bash: cd: /home/student/PRojects: No such file or directory
+bash: bash:: command not found...
+Similar command is: 'bash'
+[student@workstation ~]$ [student@workstation ~]$ cd ~/Projects
+bash: [student@workstation: command not found...
+[student@workstation ~]$ bash: cd: /home/student/Projects: No such file or directory
+rs to access the OpenShift cluster for your lab scripts
+
+ ·bash: bash:: command not found...
+Similar command is: 'bash'
+[student@workstation ~]$ [student@workstation ~]$ 
+ Enter the API Endpoint: hbash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+ttps://api.na46.prod.nextcbash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ pwd
+bash: [student@workstation: command not found...
+[student@workstation ~]$ /home/student
+bash: /home/student: Is a directory
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+762da4b020410eb2a6
+ · Entbash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+er the GitHub Account Namebash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+: ^C
+[student@workstation bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ cd ..
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation home]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation home]$ cd devops
+bash: [student@workstation: command not found...
+[student@workstation ~]$ bash: cd: devops: Permission denied
+t configures the connection parametebash: bash:: command not found...
+Similar command is: 'bash'
+[student@workstation ~]$ [student@workstation home]$ 
+rs to access the OpenShift clbash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation home]$ cd Student
+bash: [student@workstation: command not found...
+[student@workstation ~]$ bash: cd: Student: No such file or directory
+clbash: bash:: command not found...
+Similar command is: 'bash'
+[student@workstation ~]$ [student@workstation home]$ 
+e.com:6443
+ · Enter the Userbash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation home]$ 
+name: znajkx
+ · Enter the Pabash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation home]$ cd ~
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+Enter the GitHub Account Nbash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ pwd
+bash: [student@workstation: command not found...
+[student@workstation ~]$ /home/student
+bash: /home/student: Is a directory
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ cd student
+bash: [student@workstation: command not found...
+[student@workstation ~]$ bash: cd: student: No such file or directory
+bash: bash:: command not found...
+Similar command is: 'bash'
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ ls -la
+bash: [student@workstation: command not found...
+[student@workstation ~]$ total 32
+ · GitHubash: total: command not found...
+[student@workstation ~]$ drwx------. 17 student student 4096 Oct  4 08:27 .
+b Account Name:			arturrgdietrich
+ · Quay.io Accoubash: drwx------.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  4 root    root      35 Nov  5  2020 ..
+nt Name:		arturrgdietrich
+
+Generated config:
+ · APIbash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwx------.  3 student student   17 May 18 14:47 .ansible
+ Endpoint:			https://api.na46.prod.nextcle.com:6443
+ · Wibash: drwx------.: command not found...
+[student@workstation ~]$ -rw-r--r--.  1 student student   18 Aug 30  2019 .bash_logout
+bash: -rw-r--r--.: command not found...
+[student@workstation ~]$ -rw-r--r--.  1 student student  141 Aug 30  2019 .bash_profile
+bash: -rw-r--r--.: command not found...
+[student@workstation ~]$ -rw-r--r--.  1 student student  312 Aug 30  2019 .bashrc
+bash: -rw-r--r--.: command not found...
+[student@workstation ~]$ drwx------. 10 student student  233 Oct  4 08:27 .cache
+Account Name:			arturrgdietrich
+ · Quay.io Account Namebash: drwx------.: command not found...
+[student@workstation ~]$ drwxr-xr-x. 11 student student 4096 Oct  4 08:27 .config
+:		arturrgdietrich
+
+Verifying your API Endpoint...
+
+ERRORbash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  2 student student    6 Oct  4 08:27 Desktop
+:
+Cannot connect to an OpenShift 4.5 API using your URL.
+bash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  2 student student    6 Oct  4 08:27 Documents
+bash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  2 student student    6 Oct  4 08:27 Downloads
+s not point to an OpenShift 3.x nor to a non-OpenShift Kubebash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ -rw-------.  1 student student   16 May 18 14:47 .esd_auth
+etes API.
+[student@workstation ~]$ 
+[student@workstation bash: -rw-------.: command not found...
+[student@workstation ~]$ -rwxr-xr-x.  1 student student  789 May 18 14:49 .gitconfig
+bash: -rwxr-xr-x.: command not found...
+[student@workstation ~]$ -rw-------.  1 student student  310 Oct  4 08:27 .ICEauthority
+ameters to access the OpenShift cluster for your lab scripts
+
+ bash: -rw-------.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  3 student student   19 Oct  4 08:27 .local
+bash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  2 student student    6 Oct  4 08:27 Music
+bash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  2 student student    6 Oct  4 08:27 Pictures
+bash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwxrw----.  3 student student   19 Oct  4 08:27 .pki
+bash: drwxrw----.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  2 student student    6 Oct  4 08:27 Public
+bash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwx------.  2 student student   54 Nov  5  2020 .ssh
+https://api.na46.prod.nextcle.com:6443
+ · Username:		bash: drwx------.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  2 student student    6 Oct  4 08:27 Templates
+		znajkx
+ · Password:				36762da4b020410eb2a6
+ · GitHub Abash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  2 student student    6 Oct  4 08:27 Videos
+ccount Name:			arturrgdietrich
+ · Quay.io Account Name:bash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ drwxr-xr-x.  3 student student   24 May 18 14:49 .vscode-oss
+		arturrgdietrich
+
+Generated config:
+ · API Endpoint:			httpbash: drwxr-xr-x.: command not found...
+[student@workstation ~]$ [student@workstation ~]$ podman
+s://api.na46.prod.nextcle.com:64bash: [student@workstation: command not found...
+[student@workstation ~]$ Error: missing command 'podman COMMAND'
+43
+ · Wildcard Domain:			apps.na46.prodbash: Error:: command not found...
+[student@workstation ~]$ Try 'podman --help' for more information.
+bash: Try: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+s-common.apps.na46.prod.nebash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ podman | grep -i perm
+xtcle.com
+ · Username:				znajkx
+ · Password:bash: [student@workstation: command not found...
+[student@workstation ~]$ Error: missing command 'podman COMMAND'
+				36762da4b020410eb2a6
+ · GitHub Accobash: Error:: command not found...
+[student@workstation ~]$ Try 'podman --help' for more information.
+unt Name:			arturrgdietrich
+ · Quay.io Acbash: Try: command not found...
+[student@workstation ~]$ [student@workstation ~]$ podman info | grep -i perm
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ podman info | grep -isel
+point...
+
+Verifying your Nexus host...
+
+Verifying bash: [student@workstation: command not found...
+[student@workstation ~]$   BuildahVersion: 1.12.0-dev
+bash: BuildahVersion:: command not found...
+[student@workstation ~]$     package: conmon-2.0.6-1.module+el8.2.0+5182+3136e5d4.x86_64
+redentials...
+
+Verifying your GitHub account name...
+
+Verifyinbash: package:: command not found...
+[student@workstation ~]$     distribution: '"rhel"'
+bash: distribution:: command not found...
+[student@workstation ~]$   MemTotal: 6075633664
+...
+
+Verifying your clubash: MemTotal:: command not found...
+[student@workstation ~]$     package: runc-1.0.0-65.rc10.module+el8.2.0+5762+aaee29fb.x86_64
+bash: package:: command not found...
+[student@workstation ~]$   SwapTotal: 0
+ne, lab config bash: SwapTotal:: command not found...
+[student@workstation ~]$   eventlogger: journald
+bash: eventlogger:: command not found...
+[student@workstation ~]$   hostname: workstation.lab.example.com
+ed with your exercises.
+
+If you need to bash: hostname:: command not found...
+Similar command is: 'hostname'
+[student@workstation ~]$   kernel: 4.18.0-193.14.3.el8_2.x86_64
+modify the configuration, rerun this scbash: kernel:: command not found...
+[student@workstation ~]$   os: linux
+bash: os:: command not found...
+[student@workstation ~]$   rootless: true
+ctly modify the vbash: rootless:: command not found...
+[student@workstation ~]$   slirp4netns:
+bash: slirp4netns:: command not found...
+Similar command is: 'slirp4netns'
+[student@workstation ~]$     Executable: /usr/bin/slirp4netns
+ocal/etc/ocp4.config.
+
+[student@worksbash: Executable:: command not found...
+[student@workstation ~]$     Package: slirp4netns-0.4.2-3.git21fdece.module+el8.2.0+5658+9a15711d.x86_64
+bash: Package:: command not found...
+[student@workstation ~]$       slirp4netns version 0.4.2+dev
+tion ~]$ 
+[student@workstation ~]$ 
+PID must be a positive integer
+Usage: slirp4netns [OPTION]... PID|PATH TAPNAME
+User-mode networking for unprivileged network namespaces.
+
+-c, --configure          bring up the interface
+-e, --exit-fd=FD         specify the FD for terminating slirp4netns
+-r, --ready-fd=FD        specify the FD to write to when the network is configured
+-m, --mtu=MTU            specify MTU (default=1500, max=65521)
+-6, --enable-ipv6        enable IPv6 (experimental)
+-a, --api-socket=PATH    specify API socket path
+--cidr=CIDR              specify network address CIDR (default=10.0.2.0/24)
+--disable-host-loopback  prohibit connecting to 127.0.0.1:* on the host namespace
+--netns-type=TYPE 	 specify network namespace type ([path|pid], default=pid)
+--userns-path=PATH	 specify user namespace path
+--enable-sandbox         create a new mount namespace and drop all capabilities except CAP_NET_BIND_SERVICE (experimental)
+--enable-seccomp         enable seccomp to limit syscalls (experimental)
+-h, --help               show this help and exit
+-v, --version            show version and exit
+[student@workstation ~]$   uptime: 2h 31m 36.25s (Approximately 0.08 days)
+bash: syntax error near unexpected token `('
+[student@workstation ~]$ 
+[student@workstation ~]$[student@workstation ~]$   blocked: null
+ 
+bash: blocked:: command not found...
+[student@workstation ~]$   insecure: null
+bash: insecure:: command not found...
+[student@workstation ~]$   ConfigFile: /home/student/.config/containers/storage.conf
+bash: ConfigFile:: command not found...
+[student@workstation ~]$   GraphDriverName: overlay
+bash: GraphDriverName:: command not found...
+[student@workstation ~]$     overlay.mount_program:
+bash: overlay.mount_program:: command not found...
+[student@workstation ~]$       Executable: /usr/bin/fuse-overlayfs
+bash: Executable:: command not found...
+[student@workstation ~]$       Package: fuse-overlayfs-0.7.2-5.module+el8.2.0+6060+9dbc027d.x86_64
+bash: Package:: command not found...
+[student@workstation ~]$         fuse-overlayfs: version 0.7.2
+bash: fuse-overlayfs:: command not found...
+Similar command is: 'fuse-overlayfs'
+[student@workstation ~]$         FUSE library version 3.2.1
+bash: FUSE: command not found...
+[student@workstation ~]$         using FUSE kernel interface version 7.26
+bash: using: command not found...
+[student@workstation ~]$   GraphRoot: /home/student/.local/share/containers/storage
+bash: GraphRoot:: command not found...
+[student@workstation ~]$     Backing Filesystem: xfs
+bash: Backing: command not found...
+[student@workstation ~]$     Native Overlay Diff: "false"
+bash: Native: command not found...
+[student@workstation ~]$     Using metacopy: "false"
+bash: Using: command not found...
+[student@workstation ~]$   VolumePath: /home/student/.local/share/containers/storage/volumes
+bash: VolumePath:: command not found...
+[student@workstation ~]$ [student@workstation ~]$ podman info | grep -i selinux
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ podman info | grep -i appar
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ podman info | grep -i app
+bash: [student@workstation: command not found...
+[student@workstation ~]$   IDMappings:
+bash: IDMappings:: command not found...
+[student@workstation ~]$   uptime: 2h 32m 4.39s (Approximately 0.08 days)
+bash: syntax error near unexpected token `('
+[student@workstation ~]$ [student@workstation ~]$ podman info | grep -i sel
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ lab-configure
+bash: [student@workstation: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+bash: This: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$  · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the Username: znajkx
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the Password: 36762da4b020410eb2a6
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the GitHub Account Name: ^C
+bash: ·: command not found...
+[student@workstation ~]$ [student@workstation ~]$ git config --global credential.helper cache
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ lab-configure
+bash: [student@workstation: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+bash: This: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$  · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the Username: znajkx
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the Password: 36762da4b020410eb2a6
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the GitHub Account Name: arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the Quay.io Account Name: arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ You entered:
+bash: You: command not found...
+[student@workstation ~]$  · API Endpoint:https://api.na46.prod.nextcle.com:6443
+bash: ·: command not found...
+[student@workstation ~]$  · Username:znajkx
+bash: ·: command not found...
+[student@workstation ~]$  · Password:36762da4b020410eb2a6
+bash: ·: command not found...
+[student@workstation ~]$  · GitHub Account Name:arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$  · Quay.io Account Name:arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Generated config:
+bash: Generated: command not found...
+[student@workstation ~]$  · API Endpoint:https://api.na46.prod.nextcle.com:6443
+bash: ·: command not found...
+[student@workstation ~]$  · Wildcard Domain:apps.na46.prod.nextcle.com
+bash: ·: command not found...
+[student@workstation ~]$  · Nexus Server Host:nexus-common.apps.na46.prod.nextcle.com
+bash: ·: command not found...
+[student@workstation ~]$  · Username:znajkx
+bash: ·: command not found...
+[student@workstation ~]$  · Password:36762da4b020410eb2a6
+bash: ·: command not found...
+[student@workstation ~]$  · GitHub Account Name:arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$  · Quay.io Account Name:arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Verifying your API Endpoint...
+bash: Verifying: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ ERROR:
+bash: ERROR:: command not found...
+[student@workstation ~]$ Cannot connect to an OpenShift 4.5 API using your URL.
+bash: Cannot: command not found...
+[student@workstation ~]$ Please verify you network connectivity and that the URL does not point to an OpenShift 3.x nor to a non-OpenShift Kubernetes API.
+bash: Please: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ lab-configure
+bash: [student@workstation: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+bash: This: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$  · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the Username: znajkx
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the Password: 36762da4b020410eb2a6
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the GitHub Account Name: arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$  · Enter the Quay.io Account Name: arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ You entered:
+bash: You: command not found...
+[student@workstation ~]$  · API Endpoint:https://api.na46.prod.nextcle.com:6443
+bash: ·: command not found...
+[student@workstation ~]$  · Username:znajkx
+bash: ·: command not found...
+[student@workstation ~]$  · Password:36762da4b020410eb2a6
+bash: ·: command not found...
+[student@workstation ~]$  · GitHub Account Name:arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$  · Quay.io Account Name:arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Generated config:
+bash: Generated: command not found...
+[student@workstation ~]$  · API Endpoint:https://api.na46.prod.nextcle.com:6443
+bash: ·: command not found...
+[student@workstation ~]$  · Wildcard Domain:apps.na46.prod.nextcle.com
+bash: ·: command not found...
+[student@workstation ~]$  · Nexus Server Host:nexus-common.apps.na46.prod.nextcle.com
+bash: ·: command not found...
+[student@workstation ~]$  · Username:znajkx
+bash: ·: command not found...
+[student@workstation ~]$  · Password:36762da4b020410eb2a6
+bash: ·: command not found...
+[student@workstation ~]$  · GitHub Account Name:arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$  · Quay.io Account Name:arturrgdietrich
+bash: ·: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Verifying your API Endpoint...
+bash: Verifying: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Verifying your Nexus host...
+bash: Verifying: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Verifying your OpenShift developer user credentials...
+bash: Verifying: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Verifying your GitHub account name...
+bash: Verifying: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Verifying your Quay.io account name...
+bash: Verifying: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Verifying your cluster configuration...
+bash: Verifying: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ Saving your lab configuration file...
+bash: Saving: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ All fine, lab config saved. You can now proceed with your exercises.
+bash: All: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ If you need to modify the configuration, rerun this script or directly modify the values in /usr/local/etc/ocp4.config.
+bash: If: command not found...
+[student@workstation ~]$ 
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$ [student@workstation ~]$ 
+bash: [student@workstation: command not found...
+[student@workstation ~]$  git clone https://github.com/arturrgdietrich/DO180-apps
+Cloning into 'DO180-apps'...
+remote: Enumerating objects: 78, done.
+remote: Total 78 (delta 0), reused 0 (delta 0), pack-reused 78
+Unpacking objects: 100% (78/78), done.
+[student@workstation ~]$ 
+[student@workstation ~]$ ls -l
+total 0
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Desktop
+drwxrwxr-x. 9 student student 143 Oct  4 10:54 DO180-apps
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Documents
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Downloads
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Music
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Pictures
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Public
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Templates
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Videos
+[student@workstation ~]$ date
+Mon Oct  4 10:54:40 EDT 2021
+[student@workstation ~]$ cd DO180-apps/
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+[student@workstation DO180-apps]$ ls
+example     nodejs-helloworld  README.md  todoapp
+nodejs-app  php-helloworld     temps
+[student@workstation DO180-apps]$  git checkout -b testbranch
+Switched to a new branch 'testbranch'
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ ls -l
+total 4
+drwxrwxr-x. 2 student student 23 Oct  4 10:54 example
+drwxrwxr-x. 2 student student 43 Oct  4 10:54 nodejs-app
+drwxrwxr-x. 2 student student 40 Oct  4 10:54 nodejs-helloworld
+drwxrwxr-x. 2 student student 23 Oct  4 10:54 php-helloworld
+-rw-rw-r--. 1 student student 54 Oct  4 10:54 README.md
+drwxrwxr-x. 2 student student 23 Oct  4 10:54 temps
+drwxrwxr-x. 5 student student 51 Oct  4 10:54 todoapp
+[student@workstation DO180-apps]$ echo "DO180" > TEST
+[student@workstation DO180-apps]$  git add .
+[student@workstation DO180-apps]$ git commit -am "DO180"
+[testbranch 4cbc982] DO180
+ 1 file changed, 1 insertion(+)
+ create mode 100644 TEST
+[student@workstation DO180-apps]$ git push --set-upstream origin testbranch
+Username for 'https://github.com': arturrgdietrich
+Password for 'https://arturrgdietrich@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/arturrgdietrich/DO180-apps/'
+[student@workstation DO180-apps]$ git push --set-upstream origin testbranch
+Username for 'https://github.com': arturrgdietrich
+Password for 'https://arturrgdietrich@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/arturrgdietrich/DO180-apps/'
+[student@workstation DO180-apps]$ git push --set-upstream origin testbranch
+Username for 'https://github.com': arturrgdietrich
+Password for 'https://arturrgdietrich@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/arturrgdietrich/DO180-apps/'
+[student@workstation DO180-apps]$ git push --set-upstream origin testbranch
+Username for 'https://github.com': arturrgdietrich
+Password for 'https://arturrgdietrich@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/arturrgdietrich/DO180-apps/'
+[student@workstation DO180-apps]$ git push --set-upstream origin testbranch
+Username for 'https://github.com': arturrgdietrich	
+Password for 'https://arturrgdietrich@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/arturrgdietrich/DO180-apps/'
+[student@workstation DO180-apps]$ git push --set-upstream origin testbranch
+Username for 'https://github.com': arturrgdietrich        
+Password for 'https://arturrgdietrich@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 284 bytes | 284.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'testbranch' on GitHub by visiting:
+remote:      https://github.com/arturrgdietrich/DO180-apps/pull/new/testbranch
+remote: 
+To https://github.com/arturrgdietrich/DO180-apps
+ * [new branch]      testbranch -> testbranch
+Branch 'testbranch' set up to track remote branch 'testbranch' from 'origin'.
+[student@workstation DO180-apps]$ touch logs
+[student@workstation DO180-apps]$ gedit logs
+
+
