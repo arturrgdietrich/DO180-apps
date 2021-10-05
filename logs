@@ -734,3 +734,1239 @@ Branch 'testbranch' set up to track remote branch 'testbranch' from 'origin'.
 [student@workstation DO180-apps]$ gedit logs
 
 
+
+[student@workstation ~]$ podman images
+REPOSITORY                            TAG      IMAGE ID       CREATED       SIZE
+registry.redhat.io/rhel8/mysql-80     1        09887d80b965   2 weeks ago   624 MB
+registry.access.redhat.com/ubi8       latest   53ce4390f2ad   2 weeks ago   233 MB
+quay.io/redhattraining/httpd-parent   latest   4346d3cace25   2 years ago   236 MB
+quay.io/redhattraining/httpd-parent   2.4      3639ce1374d3   2 years ago   236 MB
+[student@workstation ~]$ podman ps -a
+CONTAINER ID  IMAGE                                    COMMAND               CREATED       STATUS           PORTS                 NAMES
+0210c59a3de0  quay.io/redhattraining/httpd-parent:2.4  /bin/sh -c /usr/s...  19 hours ago  Up 19 hours ago  0.0.0.0:8080->80/tcp  httpd-basic
+3815d608c492  registry.redhat.io/rhel8/mysql-80:1      run-mysqld            20 hours ago  Up 20 hours ago                        mysql-basic
+[student@workstation ~]$ podman inspect 3815d608c492
+[
+    {
+        "Id": "3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485",
+        "Created": "2021-10-04T12:00:00.861787297-04:00",
+        "Path": "container-entrypoint",
+        "Args": [
+            "run-mysqld"
+        ],
+        "State": {
+            "OciVersion": "1.0.1-dev",
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 9269,
+            "ConmonPid": 9259,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2021-10-04T12:00:01.228126558-04:00",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Healthcheck": {
+                "Status": "",
+                "FailingStreak": 0,
+                "Log": null
+            }
+        },
+        "Image": "09887d80b96505f394be7a1cf5ee1919aa2cf2cb983f79008c9b310765f5231c",
+        "ImageName": "registry.redhat.io/rhel8/mysql-80:1",
+        "Rootfs": "",
+        "Pod": "",
+        "ResolvConfPath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/resolv.conf",
+        "HostnamePath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/hostname",
+        "HostsPath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/hosts",
+        "StaticDir": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata",
+        "OCIConfigPath": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/config.json",
+        "OCIRuntime": "runc",
+        "LogPath": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/ctr.log",
+        "ConmonPidFile": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/conmon.pid",
+        "Name": "mysql-basic",
+        "RestartCount": 0,
+        "Driver": "overlay",
+        "MountLabel": "system_u:object_r:container_file_t:s0:c285,c699",
+        "ProcessLabel": "system_u:system_r:container_t:s0:c285,c699",
+        "AppArmorProfile": "",
+        "EffectiveCaps": null,
+        "BoundingCaps": [
+            "CAP_CHOWN",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_FOWNER",
+            "CAP_MKNOD",
+            "CAP_NET_RAW",
+            "CAP_SETGID",
+            "CAP_SETUID",
+            "CAP_SETFCAP",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_SYS_CHROOT",
+            "CAP_KILL",
+            "CAP_AUDIT_WRITE"
+        ],
+        "ExecIDs": [
+            "a83dfe2bf0bca47c557912e05d40dcb15b1d304ea8359f472a5794833a13bc64",
+            "56ba8441b9ff913c996e3c0b2b15e32fffb9e305f8bfe1a4d1da23842d17b106",
+            "75b6c5075ebb9c475a4d7a4f2e2401dfdb3ee5812ac3d6d6ce0417f119c80383"
+        ],
+        "GraphDriver": {
+            "Name": "overlay",
+            "Data": {
+                "LowerDir": "/home/student/.local/share/containers/storage/overlay/d6ba24af3006cdddd2578bc652f2d94de8c6e0f44ea0d51f5468de9d292bd26c/diff:/home/student/.local/share/containers/storage/overlay/ae9a38fca8d0ec9c1180c74865cd2af8c64c9137393f9f0a452e5d919b4d0d33/diff:/home/student/.local/share/containers/storage/overlay/44bd91cea12d241ad83db47cbbe5b11b6b17d47ac64d17097cdea877eb04c59b/diff:/home/student/.local/share/containers/storage/overlay/1733579794674bb13464023e8b7839ad924216064387c3bc9f53c33a4b3cd3c1/diff",
+                "MergedDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/merged",
+                "UpperDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/diff",
+                "WorkDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/work"
+            }
+        },
+        "Mounts": [],
+        "Dependencies": [],
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": [],
+            "SandboxKey": "",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": ""
+        },
+        "ExitCommand": [
+            "/usr/bin/podman",
+            "--root",
+            "/home/student/.local/share/containers/storage",
+            "--runroot",
+            "/run/user/1000",
+            "--log-level",
+            "error",
+            "--cgroup-manager",
+            "cgroupfs",
+            "--tmpdir",
+            "/run/user/1000/libpod/tmp",
+            "--runtime",
+            "runc",
+            "--storage-driver",
+            "overlay",
+            "--storage-opt",
+            "overlay.mount_program=/usr/bin/fuse-overlayfs",
+            "--events-backend",
+            "journald",
+            "container",
+            "cleanup",
+            "3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485"
+        ],
+        "Namespace": "",
+        "IsInfra": false,
+        "Config": {
+            "Hostname": "3815d608c492",
+            "Domainname": "",
+            "User": "27",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "TERM=xterm",
+                "HOSTNAME=3815d608c492",
+                "container=oci",
+                "STI_SCRIPTS_PATH=/usr/libexec/s2i",
+                "MYSQL_PREFIX=/usr",
+                "MYSQL_USER=user1",
+                "MYSQL_ROOT_PASSWORD=r00tpa55",
+                "DESCRIPTION=MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "STI_SCRIPTS_URL=image:///usr/libexec/s2i",
+                "APP_ROOT=/opt/app-root",
+                "APP_DATA=/opt/app-root/src",
+                "SUMMARY=MySQL 8.0 SQL database server",
+                "HOME=/var/lib/mysql",
+                "PLATFORM=el8",
+                "MYSQL_DATABASE=items",
+                "MYSQL_VERSION=8.0",
+                "CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/mysql",
+                "MYSQL_PASSWORD=mypa55"
+            ],
+            "Cmd": [
+                "run-mysqld"
+            ],
+            "Image": "registry.redhat.io/rhel8/mysql-80:1",
+            "Volumes": null,
+            "WorkingDir": "/opt/app-root/src",
+            "Entrypoint": "container-entrypoint",
+            "OnBuild": null,
+            "Labels": {
+                "architecture": "x86_64",
+                "build-date": "2021-09-15T08:09:41.610153",
+                "com.redhat.build-host": "cpt-1001.osbs.prod.upshift.rdu2.redhat.com",
+                "com.redhat.component": "mysql-80-container",
+                "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreements#rhel",
+                "description": "MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "distribution-scope": "public",
+                "io.k8s.description": "MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "io.k8s.display-name": "MySQL 8.0",
+                "io.openshift.expose-services": "3306:mysql",
+                "io.openshift.s2i.scripts-url": "image:///usr/libexec/s2i",
+                "io.openshift.tags": "database,mysql,mysql80,mysql-80",
+                "io.s2i.scripts-url": "image:///usr/libexec/s2i",
+                "maintainer": "SoftwareCollections.org <sclorg@redhat.com>",
+                "name": "rhel8/mysql-80",
+                "release": "152",
+                "summary": "MySQL 8.0 SQL database server",
+                "url": "https://access.redhat.com/containers/#/registry.access.redhat.com/rhel8/mysql-80/images/1-152",
+                "usage": "podman run -d -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306 rhel8/mysql-80",
+                "vcs-ref": "02d6f1d42fe05396bb44dd0fbd0f8bff8da4bb6c",
+                "vcs-type": "git",
+                "vendor": "Red Hat, Inc.",
+                "version": "1"
+            },
+            "Annotations": {
+                "io.container.manager": "libpod",
+                "io.kubernetes.cri-o.ContainerType": "sandbox",
+                "io.kubernetes.cri-o.Created": "2021-10-04T12:00:00.861787297-04:00",
+                "io.kubernetes.cri-o.TTY": "false",
+                "io.podman.annotations.autoremove": "FALSE",
+                "io.podman.annotations.init": "FALSE",
+                "io.podman.annotations.privileged": "FALSE",
+                "io.podman.annotations.publish-all": "FALSE",
+                "org.opencontainers.image.stopSignal": "15"
+            },
+            "StopSignal": 15
+        },
+        "HostConfig": {
+            "Binds": [],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "k8s-file",
+                "Config": null
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": [],
+            "CapDrop": [],
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": [],
+            "GroupAdd": [],
+            "IpcMode": "",
+            "Cgroup": "",
+            "Cgroups": "default",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [],
+            "Tmpfs": {},
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 65536000,
+            "Runtime": "oci",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": 0,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "Ulimits": [
+                {
+                    "Name": "RLIMIT_NOFILE",
+                    "Soft": 1024,
+                    "Hard": 1024
+                }
+            ],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0
+        }
+    }
+]
+
+[student@workstation ~]$ podman stop 3815d608c492
+Error: given PIDs did not die within timeout
+[student@workstation ~]$ podman inspect 3815d608c492 0k
+Error: error getting image "0k": unable to find a name and tag match for 0k in repotags: no such image
+[student@workstation ~]$ podman inspect 3815d608c492 -l
+Error: you cannot provide additional arguments with --latest
+[student@workstation ~]$ podman inspect 3815d608c492
+[
+    {
+        "Id": "3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485",
+        "Created": "2021-10-04T12:00:00.861787297-04:00",
+        "Path": "container-entrypoint",
+        "Args": [
+            "run-mysqld"
+        ],
+        "State": {
+            "OciVersion": "1.0.1-dev",
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 9269,
+            "ConmonPid": 9259,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2021-10-04T12:00:01.228126558-04:00",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Healthcheck": {
+                "Status": "",
+                "FailingStreak": 0,
+                "Log": null
+            }
+        },
+        "Image": "09887d80b96505f394be7a1cf5ee1919aa2cf2cb983f79008c9b310765f5231c",
+        "ImageName": "registry.redhat.io/rhel8/mysql-80:1",
+        "Rootfs": "",
+        "Pod": "",
+        "ResolvConfPath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/resolv.conf",
+        "HostnamePath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/hostname",
+        "HostsPath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/hosts",
+        "StaticDir": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata",
+        "OCIConfigPath": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/config.json",
+        "OCIRuntime": "runc",
+        "LogPath": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/ctr.log",
+        "ConmonPidFile": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/conmon.pid",
+        "Name": "mysql-basic",
+        "RestartCount": 0,
+        "Driver": "overlay",
+        "MountLabel": "system_u:object_r:container_file_t:s0:c285,c699",
+        "ProcessLabel": "system_u:system_r:container_t:s0:c285,c699",
+        "AppArmorProfile": "",
+        "EffectiveCaps": null,
+        "BoundingCaps": [
+            "CAP_CHOWN",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_FOWNER",
+            "CAP_MKNOD",
+            "CAP_NET_RAW",
+            "CAP_SETGID",
+            "CAP_SETUID",
+            "CAP_SETFCAP",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_SYS_CHROOT",
+            "CAP_KILL",
+            "CAP_AUDIT_WRITE"
+        ],
+        "ExecIDs": [
+            "56ba8441b9ff913c996e3c0b2b15e32fffb9e305f8bfe1a4d1da23842d17b106",
+            "75b6c5075ebb9c475a4d7a4f2e2401dfdb3ee5812ac3d6d6ce0417f119c80383",
+            "a83dfe2bf0bca47c557912e05d40dcb15b1d304ea8359f472a5794833a13bc64"
+        ],
+        "GraphDriver": {
+            "Name": "overlay",
+            "Data": {
+                "LowerDir": "/home/student/.local/share/containers/storage/overlay/d6ba24af3006cdddd2578bc652f2d94de8c6e0f44ea0d51f5468de9d292bd26c/diff:/home/student/.local/share/containers/storage/overlay/ae9a38fca8d0ec9c1180c74865cd2af8c64c9137393f9f0a452e5d919b4d0d33/diff:/home/student/.local/share/containers/storage/overlay/44bd91cea12d241ad83db47cbbe5b11b6b17d47ac64d17097cdea877eb04c59b/diff:/home/student/.local/share/containers/storage/overlay/1733579794674bb13464023e8b7839ad924216064387c3bc9f53c33a4b3cd3c1/diff",
+                "MergedDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/merged",
+                "UpperDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/diff",
+                "WorkDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/work"
+            }
+        },
+        "Mounts": [],
+        "Dependencies": [],
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": [],
+            "SandboxKey": "",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": ""
+        },
+        "ExitCommand": [
+            "/usr/bin/podman",
+            "--root",
+            "/home/student/.local/share/containers/storage",
+            "--runroot",
+            "/run/user/1000",
+            "--log-level",
+            "error",
+            "--cgroup-manager",
+            "cgroupfs",
+            "--tmpdir",
+            "/run/user/1000/libpod/tmp",
+            "--runtime",
+            "runc",
+            "--storage-driver",
+            "overlay",
+            "--storage-opt",
+            "overlay.mount_program=/usr/bin/fuse-overlayfs",
+            "--events-backend",
+            "journald",
+            "container",
+            "cleanup",
+            "3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485"
+        ],
+        "Namespace": "",
+        "IsInfra": false,
+        "Config": {
+            "Hostname": "3815d608c492",
+            "Domainname": "",
+            "User": "27",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "TERM=xterm",
+                "HOSTNAME=3815d608c492",
+                "container=oci",
+                "STI_SCRIPTS_PATH=/usr/libexec/s2i",
+                "MYSQL_PREFIX=/usr",
+                "MYSQL_USER=user1",
+                "MYSQL_ROOT_PASSWORD=r00tpa55",
+                "DESCRIPTION=MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "STI_SCRIPTS_URL=image:///usr/libexec/s2i",
+                "APP_ROOT=/opt/app-root",
+                "APP_DATA=/opt/app-root/src",
+                "SUMMARY=MySQL 8.0 SQL database server",
+                "HOME=/var/lib/mysql",
+                "PLATFORM=el8",
+                "MYSQL_DATABASE=items",
+                "MYSQL_VERSION=8.0",
+                "CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/mysql",
+                "MYSQL_PASSWORD=mypa55"
+            ],
+            "Cmd": [
+                "run-mysqld"
+            ],
+            "Image": "registry.redhat.io/rhel8/mysql-80:1",
+            "Volumes": null,
+            "WorkingDir": "/opt/app-root/src",
+            "Entrypoint": "container-entrypoint",
+            "OnBuild": null,
+            "Labels": {
+                "architecture": "x86_64",
+                "build-date": "2021-09-15T08:09:41.610153",
+                "com.redhat.build-host": "cpt-1001.osbs.prod.upshift.rdu2.redhat.com",
+                "com.redhat.component": "mysql-80-container",
+                "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreements#rhel",
+                "description": "MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "distribution-scope": "public",
+                "io.k8s.description": "MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "io.k8s.display-name": "MySQL 8.0",
+                "io.openshift.expose-services": "3306:mysql",
+                "io.openshift.s2i.scripts-url": "image:///usr/libexec/s2i",
+                "io.openshift.tags": "database,mysql,mysql80,mysql-80",
+                "io.s2i.scripts-url": "image:///usr/libexec/s2i",
+                "maintainer": "SoftwareCollections.org <sclorg@redhat.com>",
+                "name": "rhel8/mysql-80",
+                "release": "152",
+                "summary": "MySQL 8.0 SQL database server",
+                "url": "https://access.redhat.com/containers/#/registry.access.redhat.com/rhel8/mysql-80/images/1-152",
+                "usage": "podman run -d -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306 rhel8/mysql-80",
+                "vcs-ref": "02d6f1d42fe05396bb44dd0fbd0f8bff8da4bb6c",
+                "vcs-type": "git",
+                "vendor": "Red Hat, Inc.",
+                "version": "1"
+            },
+            "Annotations": {
+                "io.container.manager": "libpod",
+                "io.kubernetes.cri-o.ContainerType": "sandbox",
+                "io.kubernetes.cri-o.Created": "2021-10-04T12:00:00.861787297-04:00",
+                "io.kubernetes.cri-o.TTY": "false",
+                "io.podman.annotations.autoremove": "FALSE",
+                "io.podman.annotations.init": "FALSE",
+                "io.podman.annotations.privileged": "FALSE",
+                "io.podman.annotations.publish-all": "FALSE",
+                "org.opencontainers.image.stopSignal": "15"
+            },
+            "StopSignal": 15
+        },
+        "HostConfig": {
+            "Binds": [],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "k8s-file",
+                "Config": null
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": [],
+            "CapDrop": [],
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": [],
+            "GroupAdd": [],
+            "IpcMode": "",
+            "Cgroup": "",
+            "Cgroups": "default",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [],
+            "Tmpfs": {},
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 65536000,
+            "Runtime": "oci",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": 0,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "Ulimits": [
+                {
+                    "Name": "RLIMIT_NOFILE",
+                    "Soft": 1024,
+                    "Hard": 1024
+                }
+            ],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0
+        }
+    }
+]
+
+[student@workstation ~]$ ls -la
+total 44
+drwx------. 20 student student 4096 Oct  4 12:05 .
+drwxr-xr-x.  4 root    root      35 Nov  5  2020 ..
+drwx------.  3 student student   17 May 18 14:47 .ansible
+-rw-------.  1 student student 8244 Oct  4 12:10 .bash_history
+-rw-r--r--.  1 student student   18 Aug 30  2019 .bash_logout
+-rw-r--r--.  1 student student  141 Aug 30  2019 .bash_profile
+-rw-r--r--.  1 student student  312 Aug 30  2019 .bashrc
+drwx------. 11 student student  244 Oct  4 11:02 .cache
+drwxr-xr-x. 14 student student 4096 Oct  4 11:04 .config
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Desktop
+drwxr-xr-x.  4 root    root      35 Oct  4 12:38 DO180
+drwxrwxr-x.  9 student student  180 Oct  4 11:24 DO180-apps
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Documents
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Downloads
+-rw-------.  1 student student   16 May 18 14:47 .esd_auth
+-rwxr-xr-x.  1 student student  773 Oct  4 10:37 .gitconfig
+-rw-------.  1 student student  310 Oct  4 08:27 .ICEauthority
+drwxr-xr-x.  3 student student   33 Oct  4 10:46 .kube
+drwxr-xr-x.  3 student student   19 Oct  4 08:27 .local
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Music
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Pictures
+drwxrw----.  3 student student   19 Oct  4 08:27 .pki
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Public
+drwx------.  2 student student   54 Nov  5  2020 .ssh
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Templates
+drwxr-xr-x.  2 student student    6 Oct  4 08:27 Videos
+drwxr-xr-x.  3 student student   24 May 18 14:49 .vscode-oss
+[student@workstation ~]$ ls -la .local/share/
+applications/           gnome-shell/            recently-used.xbel
+containers/             gsettings-data-convert  sounds/
+evolution/              gvfs-metadata/          tracker/
+flatpak/                icc/                    xorg/
+gnome-settings-daemon/  keyrings/               
+[student@workstation ~]$ ls -la .local/share/
+applications/           gnome-shell/            recently-used.xbel
+containers/             gsettings-data-convert  sounds/
+evolution/              gvfs-metadata/          tracker/
+flatpak/                icc/                    xorg/
+gnome-settings-daemon/  keyrings/               
+[student@workstation ~]$ ls -la .local/share/containers/
+cache/   storage/ 
+[student@workstation ~]$ ls -la .local/share/containers/
+total 0
+drwx------.  4 student student  34 Oct  4 11:59 .
+drwxr-xr-x. 14 student student 269 Oct  4 11:24 ..
+drwx------.  2 student student  39 Oct  4 11:59 cache
+drwx------.  9 student student 150 Oct  4 09:26 storage
+[student@workstation ~]$ ls -la .local/share/containers/storage/
+libpod/             overlay-containers/ storage.lock
+mounts/             overlay-images/     tmp/
+overlay/            overlay-layers/     
+[student@workstation ~]$ ls -la .local/share/containers/storage/
+total 16
+drwx------.  9 student student  150 Oct  4 09:26 .
+drwx------.  4 student student   34 Oct  4 11:59 ..
+drwx------.  2 student student   27 Oct  4 09:26 libpod
+drwx------.  2 student student    6 Oct  4 09:26 mounts
+drwx------. 13 student student 4096 Oct  4 13:03 overlay
+drwx------.  4 student student  196 Oct  4 13:03 overlay-containers
+drwx------.  6 student student 4096 Oct  4 12:47 overlay-images
+drwx------.  2 student student 4096 Oct  4 13:03 overlay-layers
+-rw-------.  1 student student   64 Oct  4 11:59 storage.lock
+drwx------.  2 student student    6 Oct  4 09:26 tmp
+[student@workstation ~]$ 
+[student@workstation ~]$ podman inspect 3815d608c492 
+[
+    {
+        "Id": "3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485",
+        "Created": "2021-10-04T12:00:00.861787297-04:00",
+        "Path": "container-entrypoint",
+        "Args": [
+            "run-mysqld"
+        ],
+        "State": {
+            "OciVersion": "1.0.1-dev",
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 9269,
+            "ConmonPid": 9259,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2021-10-04T12:00:01.228126558-04:00",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Healthcheck": {
+                "Status": "",
+                "FailingStreak": 0,
+                "Log": null
+            }
+        },
+        "Image": "09887d80b96505f394be7a1cf5ee1919aa2cf2cb983f79008c9b310765f5231c",
+        "ImageName": "registry.redhat.io/rhel8/mysql-80:1",
+        "Rootfs": "",
+        "Pod": "",
+        "ResolvConfPath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/resolv.conf",
+        "HostnamePath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/hostname",
+        "HostsPath": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/hosts",
+        "StaticDir": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata",
+        "OCIConfigPath": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/config.json",
+        "OCIRuntime": "runc",
+        "LogPath": "/home/student/.local/share/containers/storage/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/ctr.log",
+        "ConmonPidFile": "/run/user/1000/overlay-containers/3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485/userdata/conmon.pid",
+        "Name": "mysql-basic",
+        "RestartCount": 0,
+        "Driver": "overlay",
+        "MountLabel": "system_u:object_r:container_file_t:s0:c285,c699",
+        "ProcessLabel": "system_u:system_r:container_t:s0:c285,c699",
+        "AppArmorProfile": "",
+        "EffectiveCaps": null,
+        "BoundingCaps": [
+            "CAP_CHOWN",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_FOWNER",
+            "CAP_MKNOD",
+            "CAP_NET_RAW",
+            "CAP_SETGID",
+            "CAP_SETUID",
+            "CAP_SETFCAP",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_SYS_CHROOT",
+            "CAP_KILL",
+            "CAP_AUDIT_WRITE"
+        ],
+        "ExecIDs": [
+            "56ba8441b9ff913c996e3c0b2b15e32fffb9e305f8bfe1a4d1da23842d17b106",
+            "75b6c5075ebb9c475a4d7a4f2e2401dfdb3ee5812ac3d6d6ce0417f119c80383",
+            "a83dfe2bf0bca47c557912e05d40dcb15b1d304ea8359f472a5794833a13bc64"
+        ],
+        "GraphDriver": {
+            "Name": "overlay",
+            "Data": {
+                "LowerDir": "/home/student/.local/share/containers/storage/overlay/d6ba24af3006cdddd2578bc652f2d94de8c6e0f44ea0d51f5468de9d292bd26c/diff:/home/student/.local/share/containers/storage/overlay/ae9a38fca8d0ec9c1180c74865cd2af8c64c9137393f9f0a452e5d919b4d0d33/diff:/home/student/.local/share/containers/storage/overlay/44bd91cea12d241ad83db47cbbe5b11b6b17d47ac64d17097cdea877eb04c59b/diff:/home/student/.local/share/containers/storage/overlay/1733579794674bb13464023e8b7839ad924216064387c3bc9f53c33a4b3cd3c1/diff",
+                "MergedDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/merged",
+                "UpperDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/diff",
+                "WorkDir": "/home/student/.local/share/containers/storage/overlay/a672a8990ba50513a0a3a7ea642100e4e8755816dff8dcf10463dac558a83f14/work"
+            }
+        },
+        "Mounts": [],
+        "Dependencies": [],
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": [],
+            "SandboxKey": "",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": ""
+        },
+        "ExitCommand": [
+            "/usr/bin/podman",
+            "--root",
+            "/home/student/.local/share/containers/storage",
+            "--runroot",
+            "/run/user/1000",
+            "--log-level",
+            "error",
+            "--cgroup-manager",
+            "cgroupfs",
+            "--tmpdir",
+            "/run/user/1000/libpod/tmp",
+            "--runtime",
+            "runc",
+            "--storage-driver",
+            "overlay",
+            "--storage-opt",
+            "overlay.mount_program=/usr/bin/fuse-overlayfs",
+            "--events-backend",
+            "journald",
+            "container",
+            "cleanup",
+            "3815d608c49210a873b276bd8eb63ad653fa8f3881ddc74bc160ea7fdb92f485"
+        ],
+        "Namespace": "",
+        "IsInfra": false,
+        "Config": {
+            "Hostname": "3815d608c492",
+            "Domainname": "",
+            "User": "27",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "TERM=xterm",
+                "HOSTNAME=3815d608c492",
+                "container=oci",
+                "STI_SCRIPTS_PATH=/usr/libexec/s2i",
+                "MYSQL_PREFIX=/usr",
+                "MYSQL_USER=user1",
+                "MYSQL_ROOT_PASSWORD=r00tpa55",
+                "DESCRIPTION=MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "STI_SCRIPTS_URL=image:///usr/libexec/s2i",
+                "APP_ROOT=/opt/app-root",
+                "APP_DATA=/opt/app-root/src",
+                "SUMMARY=MySQL 8.0 SQL database server",
+                "HOME=/var/lib/mysql",
+                "PLATFORM=el8",
+                "MYSQL_DATABASE=items",
+                "MYSQL_VERSION=8.0",
+                "CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/mysql",
+                "MYSQL_PASSWORD=mypa55"
+            ],
+            "Cmd": [
+                "run-mysqld"
+            ],
+            "Image": "registry.redhat.io/rhel8/mysql-80:1",
+            "Volumes": null,
+            "WorkingDir": "/opt/app-root/src",
+            "Entrypoint": "container-entrypoint",
+            "OnBuild": null,
+            "Labels": {
+                "architecture": "x86_64",
+                "build-date": "2021-09-15T08:09:41.610153",
+                "com.redhat.build-host": "cpt-1001.osbs.prod.upshift.rdu2.redhat.com",
+                "com.redhat.component": "mysql-80-container",
+                "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreements#rhel",
+                "description": "MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "distribution-scope": "public",
+                "io.k8s.description": "MySQL is a multi-user, multi-threaded SQL database server. The container image provides a containerized packaging of the MySQL mysqld daemon and client application. The mysqld server daemon accepts connections from clients and provides access to content from MySQL databases on behalf of the clients.",
+                "io.k8s.display-name": "MySQL 8.0",
+                "io.openshift.expose-services": "3306:mysql",
+                "io.openshift.s2i.scripts-url": "image:///usr/libexec/s2i",
+                "io.openshift.tags": "database,mysql,mysql80,mysql-80",
+                "io.s2i.scripts-url": "image:///usr/libexec/s2i",
+                "maintainer": "SoftwareCollections.org <sclorg@redhat.com>",
+                "name": "rhel8/mysql-80",
+                "release": "152",
+                "summary": "MySQL 8.0 SQL database server",
+                "url": "https://access.redhat.com/containers/#/registry.access.redhat.com/rhel8/mysql-80/images/1-152",
+                "usage": "podman run -d -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306 rhel8/mysql-80",
+                "vcs-ref": "02d6f1d42fe05396bb44dd0fbd0f8bff8da4bb6c",
+                "vcs-type": "git",
+                "vendor": "Red Hat, Inc.",
+                "version": "1"
+            },
+            "Annotations": {
+                "io.container.manager": "libpod",
+                "io.kubernetes.cri-o.ContainerType": "sandbox",
+                "io.kubernetes.cri-o.Created": "2021-10-04T12:00:00.861787297-04:00",
+                "io.kubernetes.cri-o.TTY": "false",
+                "io.podman.annotations.autoremove": "FALSE",
+                "io.podman.annotations.init": "FALSE",
+                "io.podman.annotations.privileged": "FALSE",
+                "io.podman.annotations.publish-all": "FALSE",
+                "org.opencontainers.image.stopSignal": "15"
+            },
+            "StopSignal": 15
+        },
+        "HostConfig": {
+            "Binds": [],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "k8s-file",
+                "Config": null
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": [],
+            "CapDrop": [],
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": [],
+            "GroupAdd": [],
+            "IpcMode": "",
+            "Cgroup": "",
+            "Cgroups": "default",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [],
+            "Tmpfs": {},
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 65536000,
+            "Runtime": "oci",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": 0,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "Ulimits": [
+                {
+                    "Name": "RLIMIT_NOFILE",
+                    "Soft": 1024,
+                    "Hard": 1024
+                }
+            ],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0
+        }
+    }
+]
+
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ podman ps a
+Error: `podman ps` takes no arguments
+[student@workstation ~]$ podman ps -a
+CONTAINER ID  IMAGE                                    COMMAND               CREATED       STATUS           PORTS                 NAMES
+0210c59a3de0  quay.io/redhattraining/httpd-parent:2.4  /bin/sh -c /usr/s...  19 hours ago  Up 19 hours ago  0.0.0.0:8080->80/tcp  httpd-basic
+3815d608c492  registry.redhat.io/rhel8/mysql-80:1      run-mysqld            20 hours ago  Up 20 hours ago                        mysql-basic
+[student@workstation ~]$ podman stop 3815d608c492 
+Error: given PIDs did not die within timeout
+[student@workstation ~]$ podman ps -a
+CONTAINER ID  IMAGE                                    COMMAND               CREATED       STATUS           PORTS                 NAMES
+0210c59a3de0  quay.io/redhattraining/httpd-parent:2.4  /bin/sh -c /usr/s...  19 hours ago  Up 19 hours ago  0.0.0.0:8080->80/tcp  httpd-basic
+3815d608c492  registry.redhat.io/rhel8/mysql-80:1      run-mysqld            20 hours ago  Up 20 hours ago                        mysql-basic
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ ls -l
+total 0
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Desktop
+drwxr-xr-x. 4 root    root     35 Oct  4 12:38 DO180
+drwxrwxr-x. 9 student student 180 Oct  4 11:24 DO180-apps
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Documents
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Downloads
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Music
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Pictures
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Public
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Templates
+drwxr-xr-x. 2 student student   6 Oct  4 08:27 Videos
+[student@workstation ~]$ lab container-review finish
+
+Completing the Lab: Creating Containerized Services
+
+ · Removing "httpd-basic" container............................  SUCCESS
+ · Removing "redhattraining/httpd-parent:2.4" image............  SUCCESS
+[student@workstation ~]$ 
+[student@workstation ~]$ podman ps -a
+CONTAINER ID  IMAGE                                COMMAND     CREATED       STATUS           PORTS  NAMES
+3815d608c492  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  20 hours ago  Up 20 hours ago         mysql-basic
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ 
+[student@workstation ~]$ podman ps -a
+CONTAINER ID  IMAGE                                COMMAND     CREATED       STATUS           PORTS  NAMES
+3815d608c492  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  20 hours ago  Up 20 hours ago         mysql-basic
+[student@workstation ~]$ history
+    1  cd ~/PRojects
+    2  cd ~/Projects
+    3  pwd
+    4  cd ..
+    5  cd devops
+    6  cd Student
+    7  cd ~
+    8  pwd
+    9  cd student
+   10  ls -la
+   11  podman
+   12  podman | grep -i perm
+   13  podman info | grep -i perm
+   14  podman info | grep -isel
+   15  podman info | grep -i selinux
+   16  podman info | grep -i appar
+   17  podman info | grep -i app
+   18  podman info | grep -i sel
+   19  lab-configure
+   20  git config --global credential.helper cache
+   21  lab-configure
+   22  [student@workstation ~]$ cd ~/PRojects
+   23  bash: cd: /home/student/PRojects: No such file or directory
+   24  [student@workstation ~]$ cd ~/Projects
+   25  bash: cd: /home/student/Projects: No such file or directory
+   26  [student@workstation ~]$ 
+   27  [student@workstation ~]$ pwd
+   28  /home/student
+   29  [student@workstation ~]$ 
+   30  [student@workstation ~]$ cd ..
+   31  [student@workstation home]$ 
+   32  [student@workstation home]$ cd devops
+   33  bash: cd: devops: Permission denied
+   34  [student@workstation home]$ 
+   35  [student@workstation home]$ cd Student
+   36  bash: cd: Student: No such file or directory
+   37  [student@workstation home]$ 
+   38  [student@workstation home]$ cd ~
+   39  [student@workstation ~]$ 
+   40  [student@workstation ~]$ pwd
+   41  /home/student
+   42  [student@workstation ~]$ 
+   43  [student@workstation ~]$ cd student
+   44  bash: cd: student: No such file or directory
+   45  [student@workstation ~]$ 
+   46  [student@workstation ~]$ ls -la
+   47  total 32
+   48  drwx------. 17 student student 4096 Oct  4 08:27 .
+   49  drwxr-xr-x.  4 root    root      35 Nov  5  2020 ..
+   50  drwx------.  3 student student   17 May 18 14:47 .ansible
+   51  -rw-r--r--.  1 student student   18 Aug 30  2019 .bash_logout
+   52  -rw-r--r--.  1 student student  141 Aug 30  2019 .bash_profile
+   53  -rw-r--r--.  1 student student  312 Aug 30  2019 .bashrc
+   54  drwx------. 10 student student  233 Oct  4 08:27 .cache
+   55  drwxr-xr-x. 11 student student 4096 Oct  4 08:27 .config
+   56  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Desktop
+   57  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Documents
+   58  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Downloads
+   59  -rw-------.  1 student student   16 May 18 14:47 .esd_auth
+   60  -rwxr-xr-x.  1 student student  789 May 18 14:49 .gitconfig
+   61  -rw-------.  1 student student  310 Oct  4 08:27 .ICEauthority
+   62  drwxr-xr-x.  3 student student   19 Oct  4 08:27 .local
+   63  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Music
+   64  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Pictures
+   65  drwxrw----.  3 student student   19 Oct  4 08:27 .pki
+   66  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Public
+   67  drwx------.  2 student student   54 Nov  5  2020 .ssh
+   68  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Templates
+   69  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Videos
+   70  drwxr-xr-x.  3 student student   24 May 18 14:49 .vscode-oss
+   71  [student@workstation ~]$ podman
+   72  Error: missing command 'podman COMMAND'
+   73  Try 'podman --help' for more information.
+   74  [student@workstation ~]$ 
+   75  [student@workstation ~]$ podman | grep -i perm
+   76  Error: missing command 'podman COMMAND'
+   77  Try 'podman --help' for more information.
+   78  [student@workstation ~]$ podman info | grep -i perm
+   79  [student@workstation ~]$ podman info | grep -isel
+   80    BuildahVersion: 1.12.0-dev
+   81      package: conmon-2.0.6-1.module+el8.2.0+5182+3136e5d4.x86_64
+   82      distribution: '"rhel"'
+   83    MemTotal: 6075633664
+   84      package: runc-1.0.0-65.rc10.module+el8.2.0+5762+aaee29fb.x86_64
+   85    SwapTotal: 0
+   86    eventlogger: journald
+   87    hostname: workstation.lab.example.com
+   88    kernel: 4.18.0-193.14.3.el8_2.x86_64
+   89    os: linux
+   90    rootless: true
+   91    slirp4netns:
+   92      Executable: /usr/bin/slirp4netns
+   93      Package: slirp4netns-0.4.2-3.git21fdece.module+el8.2.0+5658+9a15711d.x86_64
+   94        slirp4netns version 0.4.2+dev
+   95    uptime: 2h 31m 36.25s (Approximately 0.08 days)
+   96    blocked: null
+   97    insecure: null
+   98    ConfigFile: /home/student/.config/containers/storage.conf
+   99    GraphDriverName: overlay
+  100      overlay.mount_program:
+  101        Executable: /usr/bin/fuse-overlayfs
+  102        Package: fuse-overlayfs-0.7.2-5.module+el8.2.0+6060+9dbc027d.x86_64
+  103          fuse-overlayfs: version 0.7.2
+  104          FUSE library version 3.2.1
+  105          using FUSE kernel interface version 7.26
+  106    GraphRoot: /home/student/.local/share/containers/storage
+  107      Backing Filesystem: xfs
+  108      Native Overlay Diff: "false"
+  109      Using metacopy: "false"
+  110    VolumePath: /home/student/.local/share/containers/storage/volumes
+  111  [student@workstation ~]$ podman info | grep -i selinux
+  112  [student@workstation ~]$ podman info | grep -i appar
+  113  [student@workstation ~]$ podman info | grep -i app
+  114    IDMappings:
+  115    uptime: 2h 32m 4.39s (Approximately 0.08 days)
+  116  [student@workstation ~]$ podman info | grep -i sel
+  117  [student@workstation ~]$ 
+  118  [student@workstation ~]$ lab-configure
+  119  This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+  120   · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+  121   · Enter the Username: znajkx
+  122   · Enter the Password: 36762da4b020410eb2a6
+  123   · Enter the GitHub Account Name: ^C
+  124  [student@workstation ~]$ git config --global credential.helper cache
+  125  [student@workstation ~]$ lab-configure
+  126  This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+  127   · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+  128   · Enter the Username: znajkx
+  129   · Enter the Password: 36762da4b020410eb2a6
+  130   · Enter the GitHub Account Name: arturrgdietrich
+  131   · Enter the Quay.io Account Name: arturrgdietrich
+  132  You entered:
+  133   · API Endpoint:https://api.na46.prod.nextcle.com:6443
+  134   · Username:znajkx
+  135   · Password:36762da4b020410eb2a6
+  136   · GitHub Account Name:arturrgdietrich
+  137   · Quay.io Account Name:arturrgdietrich
+  138  Generated config:
+  139   · API Endpoint:https://api.na46.prod.nextcle.com:6443
+  140   · Wildcard Domain:apps.na46.prod.nextcle.com
+  141   · Nexus Server Host:nexus-common.apps.na46.prod.nextcle.com
+  142   · Username:znajkx
+  143   · Password:36762da4b020410eb2a6
+  144   · GitHub Account Name:arturrgdietrich
+  145   · Quay.io Account Name:arturrgdietrich
+  146  Verifying your API Endpoint...
+  147  ERROR:
+  148  Cannot connect to an OpenShift 4.5 API using your URL.
+  149  Please verify you network connectivity and that the URL does not point to an OpenShift 3.x nor to a non-OpenShift Kubernetes API.
+  150  [student@workstation ~]$ 
+  151  [student@workstation ~]$ lab-configure
+  152  This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+  153   · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+  154   · Enter the Username: znajkx
+  155   · Enter the Password: 36762da4b020410eb2a6
+  156   · Enter the GitHub Account Name: arturrgdietrich
+  157   · Enter the Quay.io Account Name: arturrgdietrich
+  158  You entered:
+  159   · API Endpoint:https://api.na46.prod.nextcle.com:6443
+  160   · Username:znajkx
+  161   · Password:36762da4b020410eb2a6
+  162   · GitHub Account Name:arturrgdietrich
+  163   · Quay.io Account Name:arturrgdietrich
+  164  Generated config:
+  165   · API Endpoint:https://api.na46.prod.nextcle.com:6443
+  166   · Wildcard Domain:apps.na46.prod.nextcle.com
+  167   · Nexus Server Host:nexus-common.apps.na46.prod.nextcle.com
+  168   · Username:znajkx
+  169   · Password:36762da4b020410eb2a6
+  170   · GitHub Account Name:arturrgdietrich
+  171   · Quay.io Account Name:arturrgdietrich
+  172  Verifying your API Endpoint...
+  173  Verifying your Nexus host...
+  174  Verifying your OpenShift developer user credentials...
+  175  Verifying your GitHub account name...
+  176  Verifying your Quay.io account name...
+  177  Verifying your cluster configuration...
+  178  Saving your lab configuration file...
+  179  All fine, lab config saved. You can now proceed with your exercises.
+  180  If you need to modify the configuration, rerun this script or directly modify the values in /usr/local/etc/ocp4.config.
+  181  [student@workstation ~]$ 
+  182   git clone https://github.com/arturrgdietrich/DO180-apps
+  183  ls -l
+  184  date
+  185  cd DO180-apps/
+  186  git status
+  187  ls
+  188   git checkout -b testbranch
+  189  ls -l
+  190  echo "DO180" > TEST
+  191   git add .
+  192  git commit -am "DO180"
+  193  git push --set-upstream origin testbranch
+  194  touch logs
+  195  gedit logs
+  196  echo "OCP4.6" > TEST
+  197  git add .
+  198  git commit -am "OCP4.6"
+  199  git push
+  200  ls -l
+  201  head README.md
+  202  podman search hpptd
+  203  sudo vi /etc/containers/registries.conf
+  204  gedit logs
+  205  gedit logs2
+  206  ls -lrt
+  207  lab container-create start
+  208  podmanl login registry.redhat.io
+  209  podman login registry.redhat.io
+  210  podman list
+  211  podman run --name mysql-basic  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  -d registry.redhat.io/rhel8/mysql-80:1
+  212  podman ps
+  213  podman ps --format "{{.ID}} {{.Image}} {{.Names}}"
+  214  podman exec -it mysql-basic /bin/bash
+  215  pwd
+  216  ls -lrt
+  217  cd DO180-apps
+  218  ls -lrt
+  219  podman exec -it mysql-basic /bin/bash
+  220  ls -l
+  221  cd DO180-apps
+  222  ls -lrt
+  223  podman exec -it mysql-basic /bin/bash
+  224  podman images
+  225  podman ps -a
+  226  podman inspect 3815d608c492
+  227  podman stop 3815d608c492
+  228  podman inspect 3815d608c492 0k
+  229  podman inspect 3815d608c492 -l
+  230  podman inspect 3815d608c492
+  231  ls -la
+  232  ls -la .local/share/containers/
+  233  ls -la .local/share/containers/storage/
+  234  podman inspect 3815d608c492 
+  235  podman ps a
+  236  podman ps -a
+  237  podman stop 3815d608c492 
+  238  podman ps -a
+  239  ls -l
+  240  lab container-review finish
+  241  podman ps -a
+  242  history
+[student@workstation ~]$ 
+
+
+
+
+
