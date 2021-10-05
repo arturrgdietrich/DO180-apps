@@ -1,3 +1,118 @@
+ion DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ lab image-operations start
+
+Setting up workstation for the GE: Creating a Custom Apache Container Image
+
+ · Checking podman configuration...............................  SUCCESS
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman login quay.io
+Username: arturrgdietrich
+Password: 
+Error: error logging into "quay.io": invalid username/password
+[student@workstation DO180-apps]$ podman login quay.io
+Username: arturrgdietrich
+Password: 
+Error: error logging into "quay.io": invalid username/password
+[student@workstation DO180-apps]$ podman login quay.io
+Username: arturrgdietrich
+Password: 
+Error: error logging into "quay.io": invalid username/password
+[student@workstation DO180-apps]$ podman login quay.io
+Username: arturrgdietrich
+Password: 
+Login Succeeded!
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman run -d --name official-httpd -p 8180:80 quay.io/redhattraining/httpd-parent
+4cfa3498ab01d62dd101360f56606dbe0b8f1b77a00516d9ef72d3db5fc4736d
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman ps -a
+CONTAINER ID  IMAGE                                       COMMAND               CREATED        STATUS            PORTS                 NAMES
+4cfa3498ab01  quay.io/redhattraining/httpd-parent:latest  /bin/sh -c /usr/s...  5 seconds ago  Up 5 seconds ago  0.0.0.0:8180->80/tcp  official-httpd
+3815d608c492  registry.redhat.io/rhel8/mysql-80:1         run-mysqld            24 hours ago   Up 24 hours ago                         mysql-basic
+[student@workstation DO180-apps]$ podman exec -it official-httpd /bin/bash
+bash-4.4# 
+bash-4.4# echo "DO180 Page" > /var/www/html/do180.html
+bash-4.4# 
+bash-4.4# exit
+exit
+[student@workstation DO180-apps]$ curl 127.0.0.1:8180/do180.html
+DO180 Page
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman diff official-httpd
+C /run/httpd
+A /run/httpd/cgisock.1
+A /run/httpd/httpd.pid
+C /root
+A /root/.bash_history
+C /var
+C /var/www
+C /var/www/html
+A /var/www/html/do180.html
+C /var/log
+C /var/log/httpd
+A /var/log/httpd/error_log
+A /var/log/httpd/access_log
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman stop official-httpd
+4cfa3498ab01d62dd101360f56606dbe0b8f1b77a00516d9ef72d3db5fc4736d
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman commit -a 'artur-httpd' official-httpd do180-custom-httpd
+Getting image source signatures
+Copying blob 24d85c895b6b skipped: already exists
+Copying blob c613b100be16 skipped: already exists
+Copying blob 574bcc187eda skipped: already exists
+Copying blob 7f9108fde4a1 skipped: already exists
+Copying blob fac9cc6e70f4 done
+Copying config 08b6f97939 done
+Writing manifest to image destination
+Storing signatures
+08b6f97939a3093f3268e0799fff75a0ba79f862b48d802fcb1ef3bcd6e0a193
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman images
+REPOSITORY                            TAG      IMAGE ID       CREATED          SIZE
+localhost/do180-custom-httpd          latest   08b6f97939a3   25 seconds ago   236 MB
+registry.redhat.io/rhel8/mysql-80     1        09887d80b965   2 weeks ago      624 MB
+registry.access.redhat.com/ubi8       latest   53ce4390f2ad   2 weeks ago      233 MB
+quay.io/redhattraining/httpd-parent   latest   4346d3cace25   2 years ago      236 MB
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ source /usr/local/etc/ocp4.config
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman tag do180-custom-httpd quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman images
+REPOSITORY                                   TAG      IMAGE ID       CREATED         SIZE
+localhost/do180-custom-httpd                 latest   08b6f97939a3   3 minutes ago   236 MB
+quay.io/arturrgdietrich/do180-custom-httpd   v1.0     08b6f97939a3   3 minutes ago   236 MB
+registry.redhat.io/rhel8/mysql-80            1        09887d80b965   2 weeks ago     624 MB
+registry.access.redhat.com/ubi8              latest   53ce4390f2ad   2 weeks ago     233 MB
+quay.io/redhattraining/httpd-parent          latest   4346d3cace25   2 years ago     236 MB
+[student@workstation DO180-apps]$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   275  git push
   276  git comming
   277  git commit
@@ -132,5 +247,88 @@ quay.io/arturrgdietrich/do180-custom-httpd   v1.0     08b6f97939a3   3 minutes a
 registry.redhat.io/rhel8/mysql-80            1        09887d80b965   2 weeks ago     624 MB
 registry.access.redhat.com/ubi8              latest   53ce4390f2ad   2 weeks ago     233 MB
 quay.io/redhattraining/httpd-parent          latest   4346d3cace25   2 years ago     236 MB
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ gedit logs3
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ git add ./logs3
+[student@workstation DO180-apps]$ git commit
+Aborting commit due to empty commit message.
+[student@workstation DO180-apps]$ history | grep commit
+  192  git commit -am "DO180"
+  198  git commit -am "OCP4.6"
+  274  git commit -a
+  277  git commit
+  282  git commit
+  283  git commit -a
+  286  git commit -am DO180
+  297  podman commit -a 'artur-httpd' official-httpd do180-custom-httpd
+  304  git commit
+  305  history | grep commit
+[student@workstation DO180-apps]$ git commit -am DO180
+[testbranch 44a9fd8] DO180
+ 1 file changed, 136 insertions(+)
+ create mode 100644 logs3
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ git push
+Username for 'https://github.com': arturrgdietrich
+Password for 'https://arturrgdietrich@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.77 KiB | 1.77 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/arturrgdietrich/DO180-apps
+   f9799bc..44a9fd8  testbranch -> testbranch
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman push quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+Getting image source signatures
+Copying blob fac9cc6e70f4 done
+Copying blob 24d85c895b6b skipped: already exists
+Copying blob 574bcc187eda skipped: already exists
+Copying blob 7f9108fde4a1 skipped: already exists
+Copying blob c613b100be16 skipped: already exists
+Error: Error copying image to the remote destination: Error writing blob: Error initiating layer upload to /v2/arturrgdietrich/do180-custom-httpd/blobs/uploads/ in quay.io: unauthorized: access to the requested resource is not authorized
+[student@workstation DO180-apps]$ podman push quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+Getting image source signatures
+Copying blob fac9cc6e70f4 done
+Copying blob 7f9108fde4a1 skipped: already exists
+Copying blob c613b100be16 skipped: already exists
+Copying blob 574bcc187eda skipped: already exists
+Copying blob 24d85c895b6b skipped: already exists
+Copying config 08b6f97939 done
+Writing manifest to image destination
+Copying config 08b6f97939 done
+Writing manifest to image destination
+Writing manifest to image destination
+Storing signatures
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman pull -q quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+9c20825c6b89ac74efd1f6c6684d8e7186876dea4afefae3ea11deb86ca1e8ab
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman run -d --name test-httpd -p 8280:80 ${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+be403bd50221ee74cfc9384e50ba32a6ad144021b8070d4740d0f49bf8ac3fc2
+[student@workstation DO180-apps]$ curl http://localhost:8280/do180.html
+DO180 Page
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ lab image-operations finish
+
+Completing the GE: Creating a Custom Apache Container Image
+
+ · Stopping official-httpd container...........................  SUCCESS
+ · Removing official-httpd container...........................  SUCCESS
+ · Stopping test-httpd container...............................  SUCCESS
+ · Removing test-httpd container...............................  SUCCESS
+ · Removing redhattraining/httpd-parent image..................  SUCCESS
+ · Removing quay.io/arturrgdietrich/do180-custom-httpd image...  SUCCESS
+ · Removing localhost/do180-custom-httpd image.................  SUCCESS
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
 [student@workstation DO180-apps]$ 
 
