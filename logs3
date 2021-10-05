@@ -1,0 +1,136 @@
+  275  git push
+  276  git comming
+  277  git commit
+  278  history | grep git
+  279  git status
+  281  git add logs2
+  282  git commit
+  283  git commit -a
+  285  history | grep git
+[student@workstation DO180-apps]$ git commit -am DO180
+[testbranch f9799bc] DO180
+ 2 files changed, 1081 insertions(+)
+ create mode 100644 logs2
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 3.96 KiB | 3.96 MiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+To https://github.com/arturrgdietrich/DO180-apps
+   a4eb770..f9799bc  testbranch -> testbranch
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ clear
+
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ lab image-operations start
+
+Setting up workstation for the GE: Creating a Custom Apache Container Image
+
+ · Checking podman configuration...............................  SUCCESS
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman login quay.io
+Username: arturrgdietrich
+Password: 
+Error: error logging into "quay.io": invalid username/password
+[student@workstation DO180-apps]$ podman login quay.io
+Username: arturrgdietrich
+Password: 
+Error: error logging into "quay.io": invalid username/password
+[student@workstation DO180-apps]$ podman login quay.io
+Username: arturrgdietrich
+Password: 
+Error: error logging into "quay.io": invalid username/password
+[student@workstation DO180-apps]$ podman login quay.io
+Username: arturrgdietrich
+Password: 
+Login Succeeded!
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman run -d --name official-httpd -p 8180:80 quay.io/redhattraining/httpd-parent
+4cfa3498ab01d62dd101360f56606dbe0b8f1b77a00516d9ef72d3db5fc4736d
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman ps -a
+CONTAINER ID  IMAGE                                       COMMAND               CREATED        STATUS            PORTS                 NAMES
+4cfa3498ab01  quay.io/redhattraining/httpd-parent:latest  /bin/sh -c /usr/s...  5 seconds ago  Up 5 seconds ago  0.0.0.0:8180->80/tcp  official-httpd
+3815d608c492  registry.redhat.io/rhel8/mysql-80:1         run-mysqld            24 hours ago   Up 24 hours ago                         mysql-basic
+[student@workstation DO180-apps]$ podman exec -it official-httpd /bin/bash
+bash-4.4# 
+bash-4.4# echo "DO180 Page" > /var/www/html/do180.html
+bash-4.4# 
+bash-4.4# exit
+exit
+[student@workstation DO180-apps]$ curl 127.0.0.1:8180/do180.html
+DO180 Page
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman diff official-httpd
+C /run/httpd
+A /run/httpd/cgisock.1
+A /run/httpd/httpd.pid
+C /root
+A /root/.bash_history
+C /var
+C /var/www
+C /var/www/html
+A /var/www/html/do180.html
+C /var/log
+C /var/log/httpd
+A /var/log/httpd/error_log
+A /var/log/httpd/access_log
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman stop official-httpd
+4cfa3498ab01d62dd101360f56606dbe0b8f1b77a00516d9ef72d3db5fc4736d
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman commit -a 'artur-httpd' official-httpd do180-custom-httpd
+Getting image source signatures
+Copying blob 24d85c895b6b skipped: already exists
+Copying blob c613b100be16 skipped: already exists
+Copying blob 574bcc187eda skipped: already exists
+Copying blob 7f9108fde4a1 skipped: already exists
+Copying blob fac9cc6e70f4 done
+Copying config 08b6f97939 done
+Writing manifest to image destination
+Storing signatures
+08b6f97939a3093f3268e0799fff75a0ba79f862b48d802fcb1ef3bcd6e0a193
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman images
+REPOSITORY                            TAG      IMAGE ID       CREATED          SIZE
+localhost/do180-custom-httpd          latest   08b6f97939a3   25 seconds ago   236 MB
+registry.redhat.io/rhel8/mysql-80     1        09887d80b965   2 weeks ago      624 MB
+registry.access.redhat.com/ubi8       latest   53ce4390f2ad   2 weeks ago      233 MB
+quay.io/redhattraining/httpd-parent   latest   4346d3cace25   2 years ago      236 MB
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ source /usr/local/etc/ocp4.config
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman tag do180-custom-httpd quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ podman images
+REPOSITORY                                   TAG      IMAGE ID       CREATED         SIZE
+localhost/do180-custom-httpd                 latest   08b6f97939a3   3 minutes ago   236 MB
+quay.io/arturrgdietrich/do180-custom-httpd   v1.0     08b6f97939a3   3 minutes ago   236 MB
+registry.redhat.io/rhel8/mysql-80            1        09887d80b965   2 weeks ago     624 MB
+registry.access.redhat.com/ubi8              latest   53ce4390f2ad   2 weeks ago     233 MB
+quay.io/redhattraining/httpd-parent          latest   4346d3cace25   2 years ago     236 MB
+[student@workstation DO180-apps]$ 
+
