@@ -1,0 +1,822 @@
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ errpt
+bash: errpt: command not found...
+[student@workstation dockerfile]$ lspv
+bash: lspv: command not found...
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ df -g
+df: invalid option -- 'g'
+Try 'df --help' for more information.
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ ls -l
+total 4
+-rw-rw-r--. 1 student student 344 Oct  6 08:24 dockerfile
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ ls -lrt
+total 4
+-rw-rw-r--. 1 student student 344 Oct  6 08:24 dockerfile
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ mv dockerfile ContainerFile
+[student@workstation dockerfile]$ sudo podman build --layers=false -t do180/apache .
+Error: error reading info about "/home/student/DO180-apps/dockerfile/home/student/DO180-apps/dockerfile/Dockerfile": stat /home/student/DO180-apps/dockerfile/home/student/DO180-apps/dockerfile/Dockerfile: no such file or directory
+[student@workstation dockerfile]$ ls -lrt
+total 4
+-rw-rw-r--. 1 student student 344 Oct  6 08:24 ContainerFile
+[student@workstation dockerfile]$ sudo podman build --layers=false -t do180/apache .
+Error: error reading info about "/home/student/DO180-apps/dockerfile/home/student/DO180-apps/dockerfile/Dockerfile": stat /home/student/DO180-apps/dockerfile/home/student/DO180-apps/dockerfile/Dockerfile: no such file or directory
+[student@workstation dockerfile]$ sudo podman build --layers=false -t do180/apache .
+Error: error reading info about "/home/student/DO180-apps/dockerfile/home/student/DO180-apps/dockerfile/Dockerfile": stat /home/student/DO180-apps/dockerfile/home/student/DO180-apps/dockerfile/Dockerfile: no such file or directory
+[student@workstation dockerfile]$ odman build --layers=false -t do180/apache .
+bash: odman: command not found...
+[student@workstation dockerfile]$ opdman build --layers=false -t do180/apache .
+bash: opdman: command not found...
+Similar command is: 'podman'
+[student@workstation dockerfile]$ podman build --layers=false -t do180/apache .
+Error: error reading info about "/home/student/DO180-apps/dockerfile/home/student/DO180-apps/dockerfile/Dockerfile": stat /home/student/DO180-apps/dockerfile/home/student/DO180-apps/dockerfile/Dockerfile: no such file or directory
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ vi dockerfile
+[student@workstation dockerfile]$ ls -l
+total 4
+-rw-rw-r--. 1 student student 344 Oct  6 08:24 ContainerFile
+[student@workstation dockerfile]$ vi ContainerFile
+[student@workstation dockerfile]$ vi ContainerFile
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ mv ContainerFile Containerfile
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ ls -lrt
+total 4
+-rw-rw-r--. 1 student student 344 Oct  6 08:24 Containerfile
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ podman build --layers=false -t do180/apache .
+STEP 1: FROM ubi8/ubi:8.3
+Getting image source signatures
+Copying blob 55eda7743468 done
+Copying blob 4b21dcdd136d done
+Copying config 613e5da7a9 done
+Writing manifest to image destination
+Storing signatures
+STEP 2: LABEL description="This is a custom httpd container image"
+STEP 3: MAINTAINER John Doe <jdoe@xyz.com>
+STEP 4: RUN yum install -y httpd
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+
+Red Hat Universal Base Image 8 (RPMs) - BaseOS  2.8 MB/s | 793 kB     00:00    
+Red Hat Universal Base Image 8 (RPMs) - AppStre  20 MB/s | 2.4 MB     00:00    
+Red Hat Universal Base Image 8 (RPMs) - CodeRea 148 kB/s |  15 kB     00:00    
+Dependencies resolved.
+===========================================================================================
+ Package              Arch    Version                                Repository        Size
+===========================================================================================
+Installing:
+ httpd                x86_64  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream  1.4 M
+Installing dependencies:
+ apr                  x86_64  1.6.3-11.el8                           ubi-8-appstream  125 k
+ apr-util             x86_64  1.6.1-6.el8                            ubi-8-appstream  105 k
+ httpd-filesystem     noarch  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream   38 k
+ httpd-tools          x86_64  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream  106 k
+ mailcap              noarch  2.1.48-3.el8                           ubi-8-baseos      39 k
+ mod_http2            x86_64  1.15.7-3.module+el8.4.0+8625+d397f3da  ubi-8-appstream  154 k
+ redhat-logos-httpd   noarch  84.4-1.el8                             ubi-8-baseos      29 k
+Installing weak dependencies:
+ apr-util-bdb         x86_64  1.6.1-6.el8                            ubi-8-appstream   25 k
+ apr-util-openssl     x86_64  1.6.1-6.el8                            ubi-8-appstream   27 k
+Enabling module streams:
+ httpd                        2.4                                                          
+
+Transaction Summary
+===========================================================================================
+Install  10 Packages
+
+Total download size: 2.0 M
+Installed size: 5.4 M
+Downloading Packages:
+(1/10): redhat-logos-httpd-84.4-1.el8.noarch.rp 385 kB/s |  29 kB     00:00    
+(2/10): mailcap-2.1.48-3.el8.noarch.rpm         504 kB/s |  39 kB     00:00    
+(3/10): httpd-filesystem-2.4.37-39.module+el8.4 476 kB/s |  38 kB     00:00    
+(4/10): mod_http2-1.15.7-3.module+el8.4.0+8625+  21 MB/s | 154 kB     00:00    
+(5/10): apr-util-1.6.1-6.el8.x86_64.rpm          14 MB/s | 105 kB     00:00    
+(6/10): httpd-tools-2.4.37-39.module+el8.4.0+96  17 MB/s | 106 kB     00:00    
+(7/10): apr-util-openssl-1.6.1-6.el8.x86_64.rpm 7.3 MB/s |  27 kB     00:00    
+(8/10): apr-util-bdb-1.6.1-6.el8.x86_64.rpm     7.1 MB/s |  25 kB     00:00    
+(9/10): apr-1.6.3-11.el8.x86_64.rpm              20 MB/s | 125 kB     00:00    
+(10/10): httpd-2.4.37-39.module+el8.4.0+9658+b8  41 MB/s | 1.4 MB     00:00    
+--------------------------------------------------------------------------------
+Total                                            18 MB/s | 2.0 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : apr-1.6.3-11.el8.x86_64                               1/10 
+  Running scriptlet: apr-1.6.3-11.el8.x86_64                               1/10 
+  Installing       : apr-util-openssl-1.6.1-6.el8.x86_64                   2/10 
+  Installing       : apr-util-bdb-1.6.1-6.el8.x86_64                       3/10 
+  Installing       : apr-util-1.6.1-6.el8.x86_64                           4/10 
+  Running scriptlet: apr-util-1.6.1-6.el8.x86_64                           4/10 
+  Installing       : httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb    5/10 
+  Running scriptlet: httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    6/10 
+  Installing       : httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    6/10 
+  Installing       : mailcap-2.1.48-3.el8.noarch                           7/10 
+  Installing       : redhat-logos-httpd-84.4-1.el8.noarch                  8/10 
+  Installing       : mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x8    9/10 
+  Installing       : httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6   10/10 
+  Running scriptlet: httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6   10/10 
+  Verifying        : redhat-logos-httpd-84.4-1.el8.noarch                  1/10 
+  Verifying        : mailcap-2.1.48-3.el8.noarch                           2/10 
+  Verifying        : httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    3/10 
+  Verifying        : httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6    4/10 
+  Verifying        : mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x8    5/10 
+  Verifying        : apr-util-1.6.1-6.el8.x86_64                           6/10 
+  Verifying        : httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb    7/10 
+  Verifying        : apr-util-openssl-1.6.1-6.el8.x86_64                   8/10 
+  Verifying        : apr-1.6.3-11.el8.x86_64                               9/10 
+  Verifying        : apr-util-bdb-1.6.1-6.el8.x86_64                      10/10 
+Installed products updated.
+
+Installed:
+  apr-1.6.3-11.el8.x86_64                                                       
+  apr-util-1.6.1-6.el8.x86_64                                                   
+  apr-util-bdb-1.6.1-6.el8.x86_64                                               
+  apr-util-openssl-1.6.1-6.el8.x86_64                                           
+  httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_64                           
+  httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87b2deb.noarch                
+  httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_64                     
+  mailcap-2.1.48-3.el8.noarch                                                   
+  mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x86_64                        
+  redhat-logos-httpd-84.4-1.el8.noarch                                          
+
+Complete!
+STEP 5: EXPOSE 80
+STEP 6: ENV LogLevel "info"
+STEP 7: ADD /var/www/html/teste/html /var/www/html
+Error: error building at STEP "ADD /var/www/html/teste/html /var/www/html": no files found matching "/home/student/DO180-apps/dockerfile/var/www/html/teste/html": no such file or directory
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ mkdir var/www/html
+mkdir: cannot create directory ‘var/www/html’: No such file or directory
+[student@workstation dockerfile]$ mkdir -p var/www/html
+[student@workstation dockerfile]$ vi var/www/html/teste.html
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ vi ContainerFile
+[student@workstation dockerfile]$ vi Containerfile
+[student@workstation dockerfile]$ podman build --layers=false -t do180/apache .
+STEP 1: FROM ubi8/ubi:8.3
+STEP 2: LABEL description="This is a custom httpd container image"
+STEP 3: MAINTAINER John Doe <jdoe@xyz.com>
+STEP 4: RUN yum install -y httpd
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+
+Red Hat Universal Base Image 8 (RPMs) - BaseOS  7.2 MB/s | 793 kB     00:00    
+Red Hat Universal Base Image 8 (RPMs) - AppStre  20 MB/s | 2.4 MB     00:00    
+Red Hat Universal Base Image 8 (RPMs) - CodeRea 145 kB/s |  15 kB     00:00    
+Dependencies resolved.
+===========================================================================================
+ Package              Arch    Version                                Repository        Size
+===========================================================================================
+Installing:
+ httpd                x86_64  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream  1.4 M
+Installing dependencies:
+ apr                  x86_64  1.6.3-11.el8                           ubi-8-appstream  125 k
+ apr-util             x86_64  1.6.1-6.el8                            ubi-8-appstream  105 k
+ httpd-filesystem     noarch  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream   38 k
+ httpd-tools          x86_64  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream  106 k
+ mailcap              noarch  2.1.48-3.el8                           ubi-8-baseos      39 k
+ mod_http2            x86_64  1.15.7-3.module+el8.4.0+8625+d397f3da  ubi-8-appstream  154 k
+ redhat-logos-httpd   noarch  84.4-1.el8                             ubi-8-baseos      29 k
+Installing weak dependencies:
+ apr-util-bdb         x86_64  1.6.1-6.el8                            ubi-8-appstream   25 k
+ apr-util-openssl     x86_64  1.6.1-6.el8                            ubi-8-appstream   27 k
+Enabling module streams:
+ httpd                        2.4                                                          
+
+Transaction Summary
+===========================================================================================
+Install  10 Packages
+
+Total download size: 2.0 M
+Installed size: 5.4 M
+Downloading Packages:
+(1/10): redhat-logos-httpd-84.4-1.el8.noarch.rp 316 kB/s |  29 kB     00:00    
+(2/10): mailcap-2.1.48-3.el8.noarch.rpm         415 kB/s |  39 kB     00:00    
+(3/10): httpd-filesystem-2.4.37-39.module+el8.4 398 kB/s |  38 kB     00:00    
+(4/10): mod_http2-1.15.7-3.module+el8.4.0+8625+  17 MB/s | 154 kB     00:00    
+(5/10): apr-util-1.6.1-6.el8.x86_64.rpm          13 MB/s | 105 kB     00:00    
+(6/10): apr-util-openssl-1.6.1-6.el8.x86_64.rpm 1.5 MB/s |  27 kB     00:00    
+(7/10): httpd-tools-2.4.37-39.module+el8.4.0+96 2.8 MB/s | 106 kB     00:00    
+(8/10): apr-1.6.3-11.el8.x86_64.rpm              18 MB/s | 125 kB     00:00    
+(9/10): apr-util-bdb-1.6.1-6.el8.x86_64.rpm     6.4 MB/s |  25 kB     00:00    
+(10/10): httpd-2.4.37-39.module+el8.4.0+9658+b8  15 MB/s | 1.4 MB     00:00    
+--------------------------------------------------------------------------------
+Total                                            10 MB/s | 2.0 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : apr-1.6.3-11.el8.x86_64                               1/10 
+  Running scriptlet: apr-1.6.3-11.el8.x86_64                               1/10 
+  Installing       : apr-util-openssl-1.6.1-6.el8.x86_64                   2/10 
+  Installing       : apr-util-bdb-1.6.1-6.el8.x86_64                       3/10 
+  Installing       : apr-util-1.6.1-6.el8.x86_64                           4/10 
+  Running scriptlet: apr-util-1.6.1-6.el8.x86_64                           4/10 
+  Installing       : httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb    5/10 
+  Running scriptlet: httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    6/10 
+  Installing       : httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    6/10 
+  Installing       : mailcap-2.1.48-3.el8.noarch                           7/10 
+  Installing       : redhat-logos-httpd-84.4-1.el8.noarch                  8/10 
+  Installing       : mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x8    9/10 
+  Installing       : httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6   10/10 
+  Running scriptlet: httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6   10/10 
+  Verifying        : redhat-logos-httpd-84.4-1.el8.noarch                  1/10 
+  Verifying        : mailcap-2.1.48-3.el8.noarch                           2/10 
+  Verifying        : httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    3/10 
+  Verifying        : httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6    4/10 
+  Verifying        : mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x8    5/10 
+  Verifying        : apr-util-1.6.1-6.el8.x86_64                           6/10 
+  Verifying        : httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb    7/10 
+  Verifying        : apr-util-openssl-1.6.1-6.el8.x86_64                   8/10 
+  Verifying        : apr-1.6.3-11.el8.x86_64                               9/10 
+  Verifying        : apr-util-bdb-1.6.1-6.el8.x86_64                      10/10 
+Installed products updated.
+
+Installed:
+  apr-1.6.3-11.el8.x86_64                                                       
+  apr-util-1.6.1-6.el8.x86_64                                                   
+  apr-util-bdb-1.6.1-6.el8.x86_64                                               
+  apr-util-openssl-1.6.1-6.el8.x86_64                                           
+  httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_64                           
+  httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87b2deb.noarch                
+  httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_64                     
+  mailcap-2.1.48-3.el8.noarch                                                   
+  mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x86_64                        
+  redhat-logos-httpd-84.4-1.el8.noarch                                          
+
+Complete!
+STEP 5: EXPOSE 80
+STEP 6: ENV LogLevel "info"
+STEP 7: ADD /var/www/html/teste.html /var/www/html
+STEP 8: COPY ./src/ /var/www/html/
+Error: error building at STEP "COPY ./src/ /var/www/html/": no files found matching "/home/student/DO180-apps/dockerfile/src": no such file or directory
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ mkdir src
+[student@workstation dockerfile]$ cd src
+[student@workstation src]$ cd ..
+[student@workstation dockerfile]$ podman build --layers=false -t do180/apache .
+STEP 1: FROM ubi8/ubi:8.3
+STEP 2: LABEL description="This is a custom httpd container image"
+STEP 3: MAINTAINER John Doe <jdoe@xyz.com>
+STEP 4: RUN yum install -y httpd
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+
+Red Hat Universal Base Image 8 (RPMs) - BaseOS  6.1 MB/s | 793 kB     00:00    
+Red Hat Universal Base Image 8 (RPMs) - AppStre  17 MB/s | 2.4 MB     00:00    
+Red Hat Universal Base Image 8 (RPMs) - CodeRea 132 kB/s |  15 kB     00:00    
+Dependencies resolved.
+===========================================================================================
+ Package              Arch    Version                                Repository        Size
+===========================================================================================
+Installing:
+ httpd                x86_64  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream  1.4 M
+Installing dependencies:
+ apr                  x86_64  1.6.3-11.el8                           ubi-8-appstream  125 k
+ apr-util             x86_64  1.6.1-6.el8                            ubi-8-appstream  105 k
+ httpd-filesystem     noarch  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream   38 k
+ httpd-tools          x86_64  2.4.37-39.module+el8.4.0+9658+b87b2deb ubi-8-appstream  106 k
+ mailcap              noarch  2.1.48-3.el8                           ubi-8-baseos      39 k
+ mod_http2            x86_64  1.15.7-3.module+el8.4.0+8625+d397f3da  ubi-8-appstream  154 k
+ redhat-logos-httpd   noarch  84.4-1.el8                             ubi-8-baseos      29 k
+Installing weak dependencies:
+ apr-util-bdb         x86_64  1.6.1-6.el8                            ubi-8-appstream   25 k
+ apr-util-openssl     x86_64  1.6.1-6.el8                            ubi-8-appstream   27 k
+Enabling module streams:
+ httpd                        2.4                                                          
+
+Transaction Summary
+===========================================================================================
+Install  10 Packages
+
+Total download size: 2.0 M
+Installed size: 5.4 M
+Downloading Packages:
+(1/10): mailcap-2.1.48-3.el8.noarch.rpm         507 kB/s |  39 kB     00:00    
+(2/10): httpd-filesystem-2.4.37-39.module+el8.4 498 kB/s |  38 kB     00:00    
+(3/10): redhat-logos-httpd-84.4-1.el8.noarch.rp 361 kB/s |  29 kB     00:00    
+(4/10): mod_http2-1.15.7-3.module+el8.4.0+8625+  19 MB/s | 154 kB     00:00    
+(5/10): apr-util-1.6.1-6.el8.x86_64.rpm          13 MB/s | 105 kB     00:00    
+(6/10): httpd-tools-2.4.37-39.module+el8.4.0+96  18 MB/s | 106 kB     00:00    
+(7/10): apr-util-openssl-1.6.1-6.el8.x86_64.rpm 5.6 MB/s |  27 kB     00:00    
+(8/10): apr-util-bdb-1.6.1-6.el8.x86_64.rpm     4.9 MB/s |  25 kB     00:00    
+(9/10): apr-1.6.3-11.el8.x86_64.rpm              16 MB/s | 125 kB     00:00    
+(10/10): httpd-2.4.37-39.module+el8.4.0+9658+b8  42 MB/s | 1.4 MB     00:00    
+--------------------------------------------------------------------------------
+Total                                            17 MB/s | 2.0 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : apr-1.6.3-11.el8.x86_64                               1/10 
+  Running scriptlet: apr-1.6.3-11.el8.x86_64                               1/10 
+  Installing       : apr-util-openssl-1.6.1-6.el8.x86_64                   2/10 
+  Installing       : apr-util-bdb-1.6.1-6.el8.x86_64                       3/10 
+  Installing       : apr-util-1.6.1-6.el8.x86_64                           4/10 
+  Running scriptlet: apr-util-1.6.1-6.el8.x86_64                           4/10 
+  Installing       : httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb    5/10 
+  Running scriptlet: httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    6/10 
+  Installing       : httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    6/10 
+  Installing       : mailcap-2.1.48-3.el8.noarch                           7/10 
+  Installing       : redhat-logos-httpd-84.4-1.el8.noarch                  8/10 
+  Installing       : mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x8    9/10 
+  Installing       : httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6   10/10 
+  Running scriptlet: httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6   10/10 
+  Verifying        : redhat-logos-httpd-84.4-1.el8.noarch                  1/10 
+  Verifying        : mailcap-2.1.48-3.el8.noarch                           2/10 
+  Verifying        : httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87    3/10 
+  Verifying        : httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_6    4/10 
+  Verifying        : mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x8    5/10 
+  Verifying        : apr-util-1.6.1-6.el8.x86_64                           6/10 
+  Verifying        : httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb    7/10 
+  Verifying        : apr-util-openssl-1.6.1-6.el8.x86_64                   8/10 
+  Verifying        : apr-1.6.3-11.el8.x86_64                               9/10 
+  Verifying        : apr-util-bdb-1.6.1-6.el8.x86_64                      10/10 
+Installed products updated.
+
+Installed:
+  apr-1.6.3-11.el8.x86_64                                                       
+  apr-util-1.6.1-6.el8.x86_64                                                   
+  apr-util-bdb-1.6.1-6.el8.x86_64                                               
+  apr-util-openssl-1.6.1-6.el8.x86_64                                           
+  httpd-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_64                           
+  httpd-filesystem-2.4.37-39.module+el8.4.0+9658+b87b2deb.noarch                
+  httpd-tools-2.4.37-39.module+el8.4.0+9658+b87b2deb.x86_64                     
+  mailcap-2.1.48-3.el8.noarch                                                   
+  mod_http2-1.15.7-3.module+el8.4.0+8625+d397f3da.x86_64                        
+  redhat-logos-httpd-84.4-1.el8.noarch                                          
+
+Complete!
+STEP 5: EXPOSE 80
+STEP 6: ENV LogLevel "info"
+STEP 7: ADD /var/www/html/teste.html /var/www/html
+STEP 8: COPY ./src/ /var/www/html/
+STEP 9: USER apache
+STEP 10: ENTRYPOINT ["/usr/sbin/httpd"]
+STEP 11: CMD ["-D", "FOREGROUND"]
+STEP 12: COMMIT do180/apache
+Getting image source signatures
+Copying blob 476579af086a skipped: already exists
+Copying blob 1e8cd6732429 skipped: already exists
+Copying blob 4e7891785a6f done
+Copying config 497b3afbe2 done
+Writing manifest to image destination
+Storing signatures
+497b3afbe22ec78bf80fd91e162641b4d8ab4edca5be3201a6000a1743531580
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ history
+    1  cd ~/PRojects
+    2  cd ~/Projects
+    3  pwd
+    4  cd ..
+    5  cd devops
+    6  cd Student
+    7  cd ~
+    8  pwd
+    9  cd student
+   10  ls -la
+   11  podman
+   12  podman | grep -i perm
+   13  podman info | grep -i perm
+   14  podman info | grep -isel
+   15  podman info | grep -i selinux
+   16  podman info | grep -i appar
+   17  podman info | grep -i app
+   18  podman info | grep -i sel
+   19  lab-configure
+   20  git config --global credential.helper cache
+   21  lab-configure
+   22  [student@workstation ~]$ cd ~/PRojects
+   23  bash: cd: /home/student/PRojects: No such file or directory
+   24  [student@workstation ~]$ cd ~/Projects
+   25  bash: cd: /home/student/Projects: No such file or directory
+   26  [student@workstation ~]$ 
+   27  [student@workstation ~]$ pwd
+   28  /home/student
+   29  [student@workstation ~]$ 
+   30  [student@workstation ~]$ cd ..
+   31  [student@workstation home]$ 
+   32  [student@workstation home]$ cd devops
+   33  bash: cd: devops: Permission denied
+   34  [student@workstation home]$ 
+   35  [student@workstation home]$ cd Student
+   36  bash: cd: Student: No such file or directory
+   37  [student@workstation home]$ 
+   38  [student@workstation home]$ cd ~
+   39  [student@workstation ~]$ 
+   40  [student@workstation ~]$ pwd
+   41  /home/student
+   42  [student@workstation ~]$ 
+   43  [student@workstation ~]$ cd student
+   44  bash: cd: student: No such file or directory
+   45  [student@workstation ~]$ 
+   46  [student@workstation ~]$ ls -la
+   47  total 32
+   48  drwx------. 17 student student 4096 Oct  4 08:27 .
+   49  drwxr-xr-x.  4 root    root      35 Nov  5  2020 ..
+   50  drwx------.  3 student student   17 May 18 14:47 .ansible
+   51  -rw-r--r--.  1 student student   18 Aug 30  2019 .bash_logout
+   52  -rw-r--r--.  1 student student  141 Aug 30  2019 .bash_profile
+   53  -rw-r--r--.  1 student student  312 Aug 30  2019 .bashrc
+   54  drwx------. 10 student student  233 Oct  4 08:27 .cache
+   55  drwxr-xr-x. 11 student student 4096 Oct  4 08:27 .config
+   56  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Desktop
+   57  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Documents
+   58  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Downloads
+   59  -rw-------.  1 student student   16 May 18 14:47 .esd_auth
+   60  -rwxr-xr-x.  1 student student  789 May 18 14:49 .gitconfig
+   61  -rw-------.  1 student student  310 Oct  4 08:27 .ICEauthority
+   62  drwxr-xr-x.  3 student student   19 Oct  4 08:27 .local
+   63  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Music
+   64  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Pictures
+   65  drwxrw----.  3 student student   19 Oct  4 08:27 .pki
+   66  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Public
+   67  drwx------.  2 student student   54 Nov  5  2020 .ssh
+   68  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Templates
+   69  drwxr-xr-x.  2 student student    6 Oct  4 08:27 Videos
+   70  drwxr-xr-x.  3 student student   24 May 18 14:49 .vscode-oss
+   71  [student@workstation ~]$ podman
+   72  Error: missing command 'podman COMMAND'
+   73  Try 'podman --help' for more information.
+   74  [student@workstation ~]$ 
+   75  [student@workstation ~]$ podman | grep -i perm
+   76  Error: missing command 'podman COMMAND'
+   77  Try 'podman --help' for more information.
+   78  [student@workstation ~]$ podman info | grep -i perm
+   79  [student@workstation ~]$ podman info | grep -isel
+   80    BuildahVersion: 1.12.0-dev
+   81      package: conmon-2.0.6-1.module+el8.2.0+5182+3136e5d4.x86_64
+   82      distribution: '"rhel"'
+   83    MemTotal: 6075633664
+   84      package: runc-1.0.0-65.rc10.module+el8.2.0+5762+aaee29fb.x86_64
+   85    SwapTotal: 0
+   86    eventlogger: journald
+   87    hostname: workstation.lab.example.com
+   88    kernel: 4.18.0-193.14.3.el8_2.x86_64
+   89    os: linux
+   90    rootless: true
+   91    slirp4netns:
+   92      Executable: /usr/bin/slirp4netns
+   93      Package: slirp4netns-0.4.2-3.git21fdece.module+el8.2.0+5658+9a15711d.x86_64
+   94        slirp4netns version 0.4.2+dev
+   95    uptime: 2h 31m 36.25s (Approximately 0.08 days)
+   96    blocked: null
+   97    insecure: null
+   98    ConfigFile: /home/student/.config/containers/storage.conf
+   99    GraphDriverName: overlay
+  100      overlay.mount_program:
+  101        Executable: /usr/bin/fuse-overlayfs
+  102        Package: fuse-overlayfs-0.7.2-5.module+el8.2.0+6060+9dbc027d.x86_64
+  103          fuse-overlayfs: version 0.7.2
+  104          FUSE library version 3.2.1
+  105          using FUSE kernel interface version 7.26
+  106    GraphRoot: /home/student/.local/share/containers/storage
+  107      Backing Filesystem: xfs
+  108      Native Overlay Diff: "false"
+  109      Using metacopy: "false"
+  110    VolumePath: /home/student/.local/share/containers/storage/volumes
+  111  [student@workstation ~]$ podman info | grep -i selinux
+  112  [student@workstation ~]$ podman info | grep -i appar
+  113  [student@workstation ~]$ podman info | grep -i app
+  114    IDMappings:
+  115    uptime: 2h 32m 4.39s (Approximately 0.08 days)
+  116  [student@workstation ~]$ podman info | grep -i sel
+  117  [student@workstation ~]$ 
+  118  [student@workstation ~]$ lab-configure
+  119  This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+  120   · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+  121   · Enter the Username: znajkx
+  122   · Enter the Password: 36762da4b020410eb2a6
+  123   · Enter the GitHub Account Name: ^C
+  124  [student@workstation ~]$ git config --global credential.helper cache
+  125  [student@workstation ~]$ lab-configure
+  126  This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+  127   · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+  128   · Enter the Username: znajkx
+  129   · Enter the Password: 36762da4b020410eb2a6
+  130   · Enter the GitHub Account Name: arturrgdietrich
+  131   · Enter the Quay.io Account Name: arturrgdietrich
+  132  You entered:
+  133   · API Endpoint:https://api.na46.prod.nextcle.com:6443
+  134   · Username:znajkx
+  135   · Password:36762da4b020410eb2a6
+  136   · GitHub Account Name:arturrgdietrich
+  137   · Quay.io Account Name:arturrgdietrich
+  138  Generated config:
+  139   · API Endpoint:https://api.na46.prod.nextcle.com:6443
+  140   · Wildcard Domain:apps.na46.prod.nextcle.com
+  141   · Nexus Server Host:nexus-common.apps.na46.prod.nextcle.com
+  142   · Username:znajkx
+  143   · Password:36762da4b020410eb2a6
+  144   · GitHub Account Name:arturrgdietrich
+  145   · Quay.io Account Name:arturrgdietrich
+  146  Verifying your API Endpoint...
+  147  ERROR:
+  148  Cannot connect to an OpenShift 4.5 API using your URL.
+  149  Please verify you network connectivity and that the URL does not point to an OpenShift 3.x nor to a non-OpenShift Kubernetes API.
+  150  [student@workstation ~]$ 
+  151  [student@workstation ~]$ lab-configure
+  152  This script configures the connection parameters to access the OpenShift cluster for your lab scripts
+  153   · Enter the API Endpoint: https://api.na46.prod.nextcle.com:6443
+  154   · Enter the Username: znajkx
+  155   · Enter the Password: 36762da4b020410eb2a6
+  156   · Enter the GitHub Account Name: arturrgdietrich
+  157   · Enter the Quay.io Account Name: arturrgdietrich
+  158  You entered:
+  159   · API Endpoint:https://api.na46.prod.nextcle.com:6443
+  160   · Username:znajkx
+  161   · Password:36762da4b020410eb2a6
+  162   · GitHub Account Name:arturrgdietrich
+  163   · Quay.io Account Name:arturrgdietrich
+  164  Generated config:
+  165   · API Endpoint:https://api.na46.prod.nextcle.com:6443
+  166   · Wildcard Domain:apps.na46.prod.nextcle.com
+  167   · Nexus Server Host:nexus-common.apps.na46.prod.nextcle.com
+  168   · Username:znajkx
+  169   · Password:36762da4b020410eb2a6
+  170   · GitHub Account Name:arturrgdietrich
+  171   · Quay.io Account Name:arturrgdietrich
+  172  Verifying your API Endpoint...
+  173  Verifying your Nexus host...
+  174  Verifying your OpenShift developer user credentials...
+  175  Verifying your GitHub account name...
+  176  Verifying your Quay.io account name...
+  177  Verifying your cluster configuration...
+  178  Saving your lab configuration file...
+  179  All fine, lab config saved. You can now proceed with your exercises.
+  180  If you need to modify the configuration, rerun this script or directly modify the values in /usr/local/etc/ocp4.config.
+  181  [student@workstation ~]$ 
+  182   git clone https://github.com/arturrgdietrich/DO180-apps
+  183  ls -l
+  184  date
+  185  cd DO180-apps/
+  186  git status
+  187  ls
+  188   git checkout -b testbranch
+  189  ls -l
+  190  echo "DO180" > TEST
+  191   git add .
+  192  git commit -am "DO180"
+  193  git push --set-upstream origin testbranch
+  194  touch logs
+  195  gedit logs
+  196  echo "OCP4.6" > TEST
+  197  git add .
+  198  git commit -am "OCP4.6"
+  199  git push
+  200  ls -l
+  201  head README.md
+  202  podman search hpptd
+  203  sudo vi /etc/containers/registries.conf
+  204  gedit logs
+  205  gedit logs2
+  206  ls -lrt
+  207  lab container-create start
+  208  podmanl login registry.redhat.io
+  209  podman login registry.redhat.io
+  210  podman list
+  211  podman run --name mysql-basic  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  -d registry.redhat.io/rhel8/mysql-80:1
+  212  podman ps
+  213  podman ps --format "{{.ID}} {{.Image}} {{.Names}}"
+  214  podman exec -it mysql-basic /bin/bash
+  215  pwd
+  216  ls -lrt
+  217  cd DO180-apps
+  218  ls -lrt
+  219  podman exec -it mysql-basic /bin/bash
+  220  ls -l
+  221  cd DO180-apps
+  222  ls -lrt
+  223  podman exec -it mysql-basic /bin/bash
+  224  sudo ps -ef | grep "sleep 1000"
+  225  ps -ef | grep "sleep 2000!
+  226  ps -ef | grep "sleep 2000"
+  227  pwd
+  228  cd DO180-apps
+  229  ls -lrt
+  230  lab manage-store start
+  231  lab manage-storage start
+  232  mkdir -pv /home/student/local/mysql
+  233  sudo semanage fcontext -a -t container_file_t '/home/student/local/mysql(/.*)?'
+  234  sudo restorecon -R /home/student/local/mysql
+  235  ls -ldZ /home/student/local/mysql
+  236  podman unshare chown 27:27 /home/student/local/mysql
+  237  podman login registry.redhat.io
+  238  podman pull registry.redhat.io/rhel8/mysql-80:1
+  239  podman run --name persist-db -d -v /home/student/local/mysql:/var/lib/mysql/data -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 registry.redhat.io/rhel8/mysql-80:1
+  240  podman ps --format="{{.ID}} {{.Names}} {{.Status}}"
+  241  ls -ld /home/student/local/mysql/items
+  242  podman unshare ls -ld /home/student/local/mysql/items
+  243  lab manage-storage finish
+  244  lab manage-review start
+  245  ls -ld /home/student/local/mysql
+  246  mkdir -vp /home/student/local/mysql
+  247  sudo semanage fcontext -a -t container_file_t '/home/student/local/mysql(/.*)?'
+  248  sudo restorecon -R /home/student/local/mysql
+  249   ls -ldZ /home/student/local/mysql
+  250  podman unshare chown 27:27 /home/student/local/mysql
+  251  podman run --name mysql-1 -d -v /home/student/local/mysql:/var/lib/mysql/data -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -p13306:3306 registry.redhat.io/rhel8/mysql-80:1
+  252  podman cp /home/student/DO180/labs/manage-review/db.sql mysql-1:/
+  253  podman exec mysql-1 /bin/bash -c 'mysql -uuser1 -pmypa55 items < /db.sql'
+  254  podman stop mysql-1
+  255  podman run --name mysql-2 -d -v /home/student/local/mysql:/var/lib/mysql/data -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -p13306:3306 registry.redhat.io/rhel8/mysql-80:1
+  256  podman ps -a >/tmp/my-containers
+  257  podman exec mysql-2 /bin/bash
+  258  podman exec mysql-2 /bin/bash -c 'mysql -uuser1 -pmypa55 -e "select * from items.Projects;"'
+  259  podman exec -it mysql-2 /bin/bash
+  260  mysql -uuser1 -h workstation.lab.example.com 
+  261  Completing the Guided Exercise: Persisting a MySQL Database
+  262   · Stopping 'persist-db' container.............................  SUCCESS
+  263   · Removing 'persist-db' container.............................  SUCCESS
+  264   · Removing the 'registry.redhat.io/rhel8/mysql-80:1' image....  FAIL
+  265   · Removing the /home/student/local/mysql directory............  SUCCESS
+  266   · Removing the fcontext for /home/student/local/mysql.........  SUCCESS
+  267  mysql -uuser1 -h workstation.lab.example.com -pmypa55 -P13306 items
+  268  podman rm mysql-1
+  269  lab manage-review grade
+  270  lab manage-review finish
+  271  gedit logs
+  272  set -o vi
+  273  git status
+  274  git commit -a
+  275  git push
+  276  git comming
+  277  git commit
+  278  history | grep git
+  279  git status
+  280  history | grep gedit
+  281  git add logs2
+  282  git commit
+  283  git commit -a
+  284  history | grep gedit
+  285  history | grep git
+  286  git commit -am DO180
+  287  git push
+  288  clear
+  289  lab image-operations start
+  290  podman login quay.io
+  291  podman run -d --name official-httpd -p 8180:80 quay.io/redhattraining/httpd-parent
+  292  podman ps -a
+  293  podman exec -it official-httpd /bin/bash
+  294  curl 127.0.0.1:8180/do180.html
+  295  podman diff official-httpd
+  296  podman stop official-httpd
+  297  podman commit -a 'artur-httpd' official-httpd do180-custom-httpd
+  298  podman images
+  299  source /usr/local/etc/ocp4.config
+  300  podman tag do180-custom-httpd quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+  301  podman images
+  302  gedit logs3
+  303  git add ./logs3
+  304  git commit
+  305  history | grep commit
+  306  git commit -am DO180
+  307  git push
+  308  podman push quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+  309  podman pull -q quay.io/${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+  310  podman run -d --name test-httpd -p 8280:80 ${RHT_OCP4_QUAY_USER}/do180-custom-httpd:v1.0
+  311  curl http://localhost:8280/do180.html
+  312  lab image-operations finish
+  313  gedit logs3
+  314  history | grep git
+  315  git commit -am DO180
+  316  git push
+  317  lab image-review start
+  318  history | grep pull
+  319  podmal pull quay.io/
+  320  podman pull quay.io/redhattraining/nginx:1.17
+  321  history | grep run
+  322  podman run -d --name official-nginx -p 8080:80 quay.io/redhattraining/nginx:1.17
+  323  podman ps -a
+  324  podman ps
+  325  history | grep exec
+  326  podman exec -it nginx /bin/bash
+  327  podman exec -it quay.io/redhattraining/nginx:1.17 /bin/bash
+  328  podman exec -it 460366f4e7c0 
+  329  podman exec -it 460366f4e7c0 /bin/bash
+  330  curl http://localhost:8080
+  331  podman exec -it 460366f4e7c0 /bin/bash
+  332  curl http://localhost:8080
+  333  podman stop 460366f4e7c0 
+  334  history | more
+  335  history | grep podman
+  336  mkdir dockerfile
+  337  cd dockerfile
+  338  vi dockerfile
+  339  vi /var/www/html/index.html
+  340  sudo vi /var/www/html/index.html
+  341  su -
+  342  sudo su -
+  343  vi dockerfile
+  344  clear
+  345  errpt
+  346  lspv
+  347  df -g
+  348  ls -l
+  349  ls -lrt
+  350  mv dockerfile ContainerFile
+  351  sudo podman build --layers=false -t do180/apache .
+  352  ls -lrt
+  353  sudo podman build --layers=false -t do180/apache .
+  354  odman build --layers=false -t do180/apache .
+  355  opdman build --layers=false -t do180/apache .
+  356  podman build --layers=false -t do180/apache .
+  357  vi dockerfile
+  358  ls -l
+  359  vi ContainerFile
+  360  mv ContainerFile Containerfile
+  361  ls -lrt
+  362  podman build --layers=false -t do180/apache .
+  363  mkdir var/www/html
+  364  mkdir -p var/www/html
+  365  vi var/www/html/teste.html
+  366  vi ContainerFile
+  367  vi Containerfile
+  368  podman build --layers=false -t do180/apache .
+  369  mkdir src
+  370  cd src
+  371  cd ..
+  372  podman build --layers=false -t do180/apache .
+  373  history
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ 
+[student@workstation dockerfile]$ cd ..
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+
+
