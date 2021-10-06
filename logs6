@@ -1,0 +1,248 @@
+drwxrwxr-x. 4 student student     49 Oct  6 08:52 dockerfile-create
+drwxrwxr-x. 2 student student     23 Oct  4 10:54 example
+-rw-rw-r--. 1 student student 105157 Oct  5 11:37 logs
+-rw-rw-r--. 1 student student  36714 Oct  4 11:24 logs2
+-rw-rw-r--. 1 student student  14457 Oct  5 12:04 logs3
+-rw-rw-r--. 1 student student  41199 Oct  6 08:37 logs4
+-rw-rw-r--. 1 student student 224051 Oct  6 11:47 logs5
+drwxrwxr-x. 2 student student     43 Oct  4 10:54 nodejs-app
+drwxrwxr-x. 2 student student     40 Oct  4 10:54 nodejs-helloworld
+drwxrwxr-x. 2 student student     23 Oct  4 10:54 php-helloworld
+-rw-rw-r--. 1 student student     54 Oct  4 10:54 README.md
+drwxrwxr-x. 2 student student     23 Oct  4 10:54 temps
+-rw-rw-r--. 1 student student      0 Oct  6 08:38 TEST
+drwxrwxr-x. 5 student student     51 Oct  4 10:54 todoapp
+[student@workstation DO180-apps]$ git push 
+Username for 'https://github.com': arturrgdietrich
+Password for 'https://arturrgdietrich@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 28.76 KiB | 4.79 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/arturrgdietrich/DO180-apps
+   faeb9b3..3ec8126  testbranch -> testbranch
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ clear
+
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ lab openshift-routes start
+
+Setting up workstation for the Guided Exercise: Exposing a Service as a Route
+
+ Verifying the OpenShift cluster is running:
+ · Log in on OpenShift.........................................  SUCCESS
+ · Check the internal registry is up and running...............  SUCCESS
+ · Ensuring the 'znajkx-route' project does not exist..........  SUCCESS
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ source /usr/local/etc/ocp4.config
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc login -u ${RHT_OCP4_DEV_USER} -p \
+> 
+>Error: flag needs an argument: 'p' in -p
+See 'oc login --help' for usage.
+[student@workstation DO180-apps]$ > ${RHT_OCP4_DEV_PASSWORD} ${RHT_OCP4_MASTER_API}
+bash: https://api.na46.prod.nextcle.com:6443: No such file or directory
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc login -u ${RHT_OCP4_DEV_USER} -p ${RHT_OCP4_DEV_PASSWORD} ${RHT_OCP4_MASTER_API}
+Login successful.
+
+You don't have any projects. You can try to create a new project, by running
+
+    oc new-project <projectname>
+
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc new-project ${RHT_OCP4_DEV_USER}-route
+Now using project "znajkx-route" on server "https://api.na46.prod.nextcle.com:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app rails-postgresql-example
+
+to build a new example application in Ruby. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=k8s.gcr.io/serve_hostname
+
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc new-app --docker-image=quay.io/redhattraining/php-hello-dockerfile --name php-helloworld
+--> Found container image 4b696cc (2 years old) from quay.io for "quay.io/redhattraining/php-hello-dockerfile"
+
+    Red Hat Universal Base Image 8 
+    ------------------------------ 
+    The Universal Base Image is designed and engineered to be the base layer for all of your containerized applications, middleware and utilities. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This image is maintained by Red Hat and updated regularly.
+
+    Tags: base rhel8
+
+    * An image stream tag will be created as "php-helloworld:latest" that will track this image
+
+--> Creating resources ...
+    imagestream.image.openshift.io "php-helloworld" created
+    deployment.apps "php-helloworld" created
+    service "php-helloworld" created
+--> Success
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose service/php-helloworld' 
+    Run 'oc status' to view your app.
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc get pods -w
+NAME                              READY   STATUS    RESTARTS   AGE
+php-helloworld-74bb86f6cb-pzf77   1/1     Running   0          32s
+^C[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc logs -f php-helloworld-74bb86f6cb-pzf77 
+[06-Oct-2021 16:10:09] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[06-Oct-2021 16:10:09] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 10.131.2.63. Set the 'ServerName' directive globally to suppress this message
+^C
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc describe
+error: You must specify the type of resource to describe. Use "oc api-resources" for a complete list of supported resources.
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc describe oc new-app --docker-image=quay.io/redhattraining/php-hello-dockerfile --nam^C
+[student@workstation DO180-apps]$ oc describe php-helloworld-74bb86f6cb-pzf77 
+error: the server doesn't have a resource type "php-helloworld-74bb86f6cb-pzf77"
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc describe svc/php-helloworld
+Name:              php-helloworld
+Namespace:         znajkx-route
+Labels:            app=php-helloworld
+                   app.kubernetes.io/component=php-helloworld
+                   app.kubernetes.io/instance=php-helloworld
+Annotations:       openshift.io/generated-by: OpenShiftNewApp
+Selector:          deployment=php-helloworld
+Type:              ClusterIP
+IP:                172.30.4.35
+Port:              8080-tcp  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         10.131.2.63:8080
+Session Affinity:  None
+Events:            <none>
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc expose svc/php-helloworld
+route.route.openshift.io/php-helloworld exposed
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc describe route
+Name:			php-helloworld
+Namespace:		znajkx-route
+Created:		12 seconds ago
+Labels:			app=php-helloworld
+			app.kubernetes.io/component=php-helloworld
+			app.kubernetes.io/instance=php-helloworld
+Annotations:		openshift.io/host.generated=true
+Requested Host:		php-helloworld-znajkx-route.apps.na46.prod.nextcle.com
+			   exposed on router default (host apps.na46.prod.nextcle.com) 11 seconds ago
+Path:			<none>
+TLS Termination:	<none>
+Insecure Policy:	<none>
+Endpoint Port:		8080-tcp
+
+Service:	php-helloworld
+Weight:		100 (100%)
+Endpoints:	10.131.2.63:8080
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ curl php-helloworld-${RHT_OCP4_DEV_USER}-route.${RHT_OCP4_WILDCARD_DOMAIN}
+Hello, World! PHP version is 7.2.11
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc delete route/php-helloworld
+route.route.openshift.io "php-helloworld" deleted
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc expose svc/php-helloworld --name=${RHT_OCP4_DEV_USER}-xyz
+route.route.openshift.io/znajkx-xyz exposed
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ oc describe route
+Name:			znajkx-xyz
+Namespace:		znajkx-route
+Created:		15 seconds ago
+Labels:			app=php-helloworld
+			app.kubernetes.io/component=php-helloworld
+			app.kubernetes.io/instance=php-helloworld
+Annotations:		openshift.io/host.generated=true
+Requested Host:		znajkx-xyz-znajkx-route.apps.na46.prod.nextcle.com
+			   exposed on router default (host apps.na46.prod.nextcle.com) 15 seconds ago
+Path:			<none>
+TLS Termination:	<none>
+Insecure Policy:	<none>
+Endpoint Port:		8080-tcp
+
+Service:	php-helloworld
+Weight:		100 (100%)
+Endpoints:	10.131.2.63:8080
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ curl ${RHT_OCP4_DEV_USER}-xyz-${RHT_OCP4_DEV_USER}-route.${RHT_OCP4_WILDCARD_DOMAIN}
+Hello, World! PHP version is 7.2.11
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ lab openshift-routes finish
+
+Completing the Guided Exercise: Exposing a Service as a Route
+
+ · Removing OpenShift project 'znajkx-route'...................  SUCCESS
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+[student@workstation DO180-apps]$ 
+
